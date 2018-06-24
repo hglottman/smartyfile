@@ -22,4 +22,35 @@ export class FolderService {
 
   }
 
+  getAllFiles(): any {
+    const observable = this.http.get<File[]>('/file_api');
+    observable.subscribe((data) => {
+      this.allFiles = data;
+      console.log(data);
+      this.allFilesSubject.next(data);
+    });
+  }
+
+  getCustomer(file_id) {
+    return this.http.get<any>('/file_api/' + file_id);
+  }
+
+  addFile(newFile: File): void {
+    this.http.post<File>('/file_api', { file: newFile }).subscribe(() => {
+      this.getAllFiles();
+    });
+  }
+
+  deleteFile(file_id) {
+    this.http.delete<File>('/file_api/' + file_id).subscribe(() => {
+      this.getAllFiles();
+    });
+  }
+
+  editFile(updatedFile) {
+    this.http.put<File>('/file_api/' + updatedFile.file_id, { file: updatedFile }).subscribe(() => {
+      this.getAllFiles();
+    });
+  }
+
 }
