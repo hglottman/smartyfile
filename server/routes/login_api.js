@@ -16,13 +16,13 @@ router.get('/', (req, res) => {
   })
 })
 
-router.get('/:userName/:password', (req, res) => {
-  var userName = req.params.userName;
-  var password = req.params.password;
-  userInc.getOneUser(userName, password).then(data => {
-    res.send(JSON.stringify(data))
-  })
-})
+// router.get('/:userName/:password', (req, res) => {
+//   var userName = req.params.userName;
+//   var password = req.params.password;
+//   userInc.getOneUser(userName, password).then(data => {
+//     res.send(JSON.stringify(data))
+//   })
+// })
 
 
 

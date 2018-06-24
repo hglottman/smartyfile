@@ -1,65 +1,85 @@
 var Sequelize = require('sequelize');
 var smartyfile = require('./dataAccess').connection;
-const { folder } = require('../dataAccess/folders')
+const {
+  folder
+} = require('../dataAccess/folders')
 
 class User_Model {
 
-    constructor() {
+  constructor() {
 
-        this.user = smartyfile.define('Login', {
-            user_id: { type: Sequelize.INTEGER, primaryKey: true },
-            folder_id: { type: Sequelize.INTEGER },
-            first_name: { type: Sequelize.STRING },
-            last_name: { type: Sequelize.STRING },
-            user_name: { type: Sequelize.STRING },
-            password: { type: Sequelize.STRING },
-            email_adress: { type: Sequelize.STRING }
+    this.user = smartyfile.define('Login', {
+      user_id: {
+        type: Sequelize.INTEGER,
+        primaryKey: true
+      },
+      first_name: {
+        type: Sequelize.STRING
+      },
+      last_name: {
+        type: Sequelize.STRING
+      },
+      user_name: {
+        type: Sequelize.STRING
+      },
+      password: {
+        type: Sequelize.STRING
+      },
+      email_adress: {
+        type: Sequelize.STRING
+      },
+      is_active: {
+        type: Sequelize.BOOLEAN
+      }
 
-        }, {
-                freezeTableName: { type: true }
-            });
+    }, {
+      freezeTableName: {
+        type: true
+      }
+    });
 
-            // this.user.hasMany(folder, {foreignKey: folder_id })
-    }
+    // this.user.hasMany(folder, {foreignKey: folder_id })
+  }
 
-   
 
-getAllUsers() {
+
+  getAllUsers() {
     return this.user.findAll().then((data) => {
-        return data
+      return data
     }, err => {
-        console.error(err)
+      console.error(err)
     })
-}
+  }
 
 
-getOneUser(userName, password) {
-    return this.user.findOne({
-        where: {
-            userName: userName,
-            password: password
-        }
-    }).then((data) => {
-        return data
-    }, err => {
-        console.error(err)
-    })
-}
-createUser(userData) {
+  // getOneUser(userName, password) {
+  //   return this.user.findOne({
+  //     where: {
+  //       user_name: userName,
+  //       password: password
+  //     }
+  //   }).then((data) => {
+  //     return data
+  //   }, err => {
+  //     console.error(err)
+  //   })
+  // }
+  createUser(userData) {
     console.log(userData)
     return this.user.create({
-        user_id: null,
-        first_name: userData.first_name,
-        last_name: userData.last_name,
-        user_name: userData.user_name,
-        password: userData.password,
-        email_adress: userData.email_adress
+      user_id: null,
+      first_name: userData.first_name,
+      last_name: userData.last_name,
+      user_name: userData.user_name,
+      password: userData.password,
+      email_adress: userData.email_adress,
+      is_active: userData.is_active
     }).then((data) => {
-        return data
+      return data
     }, err => {
-        console.error(err)
+      console.error(err)
     })
-}
+  }
 
 } // end of class
 
