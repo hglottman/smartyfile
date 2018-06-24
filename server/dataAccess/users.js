@@ -13,7 +13,7 @@ class User_Model {
             user_name: { type: Sequelize.STRING },
             password: { type: Sequelize.STRING },
             email_adress: { type: Sequelize.STRING },
-            is_active: {type: boolean}
+            is_active: {type: Sequelize.BOOLEAN}
 
         }, {
                 freezeTableName: { type: true }
