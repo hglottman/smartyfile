@@ -1,0 +1,56 @@
+.folders-grid {
+    display:grid;
+    grid-template: minmax(250px, auto) / repeat(4,1fr);
+    grid-gap: 10px;
+}
+
+.addfile-btn {
+    grid-row: 3 / 4;
+    grid-column: 1 / 2;
+}
+
+.edit-btn {
+    grid-row: 3 / 4;
+    grid-column: 2 / 3;
+}
+
+.remove-btn {
+    grid-row: 3 / 4;
+    grid-column: 3 / 4;
+}
+
+.folderName {
+    grid-row: 2 / 3;
+    grid-column: 1 / -1;
+    font-size: 50px;
+    text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
+    margin: auto;
+    color: white;
+    font-family: 'Times New Roman', Times, serif;
+   
+    
+}
+
+
+.folder {
+    display:grid;
+    grid-template: 25% 50% 25% / repeat(3, 1fr);
+    width: 90%;
+    height: 80%;
+    margin: auto;
+    position: relative;
+    background-color: #b4b3b0;
+    border-radius: 0 6px 6px 6px;
+    box-shadow: 4px 4px 7px rgba(0, 0, 0, 0.59);
+}
+
+.folder:before {
+    content: '';
+    width: 50%;
+    height: 12px;
+    border-radius: 0 20px 0 0;
+    background-color: #b4b3b0;
+    position: absolute;
+    top: -12px;
+    left: 0px;
+}

@@ -4,9 +4,10 @@ const router = express.Router();
 const folder =  require('../dataAccess/folders');
 
 
-router.get('/', (req, res) => {
+router.get('/:id', (req, res) => {
+    user_id = req.params.id
     console.log('im got to the server')
-    company.getAllCompanys().then(data => {
+    folder.getUserFolders(id).then(data => {
         res.send(JSON.stringify(data));
     })
 })
