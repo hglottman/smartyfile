@@ -3,7 +3,7 @@
   "version": "0.0.0",
   "scripts": {
     "ng": "ng",
-    "start": "ng serve",
+    "start": "concurrently \"ng build --watch\" \"nodemon server.js\"",
     "build": "ng build",
     "test": "ng test",
     "lint": "ng lint",
@@ -24,10 +24,12 @@
     "@angular/router": "^6.0.3",
     "angular-font-awesome": "^3.1.2",
     "bootstrap": "^4.1.1",
+    "concurrently": "^3.6.0",
     "core-js": "^2.5.4",
     "express": "^4.16.3",
     "font-awesome": "^4.7.0",
     "mysql2": "^1.5.3",
+    "nodemon": "^1.17.5",
     "rxjs": "^6.0.0",
     "sequelize": "^4.38.0",
     "zone.js": "^0.8.26"

@@ -18,10 +18,10 @@ export class FolderService {
   }
 
   getAllFiles(): any {
-    const observable = this.http.get<File[]>('/file_api');
+    const folder_id = 1;
+    const observable = this.http.get<File[]>('/file_api/' + folder_id);
     observable.subscribe((data) => {
       this.allFiles = data;
-      console.log(data);
       this.allFilesSubject.next(data);
     });
   }

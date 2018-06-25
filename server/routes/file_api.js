@@ -5,6 +5,7 @@ const fileModel = require('../dataAccess/file');
 router.get('/:folder_id', (req, res) => {
   var folderId = req.params.folder_id
   fileModel.getAllFiles(folderId).then(data => {
+    console.log(data)
     res.send(JSON.stringify(data))
   })
 })
