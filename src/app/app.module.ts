@@ -16,11 +16,14 @@ import {MatSelectModule} from '@angular/material/select';
 import { HttpClientModule } from '@angular/common/http';
 import {MatDialogModule} from '@angular/material/dialog';
 import { ReactiveFormsModule } from '@angular/forms';
+import { FolderService } from './folder.service';
+import { AddfolderComponent } from './addfolder/addfolder.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    FolderComponent
+    FolderComponent,
+    AddfolderComponent
   ],
   imports: [
     BrowserModule,
@@ -37,7 +40,7 @@ import { ReactiveFormsModule } from '@angular/forms';
     MatToolbarModule,
     AppRoutingModule
   ],
-  providers: [],
+  providers: [FolderService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

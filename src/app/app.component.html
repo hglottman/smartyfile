@@ -3,7 +3,13 @@
 <div class="app-grid">
 
   <div class="header">
-    <a routerlink = '/'><i class="fa fa-home fa-5x home"></i></a>
+    <button mat-button>LOG OUT</button>
+    <button mat-button (click)="toggleAddingNewFolder()" >ADD NEW FOLDER</button>
+    <br>
+    <div class="addNewFolder" *ngIf="isActive === true">
+        <app-addfolder></app-addfolder>
+    </div>
+    <i class="fa fa-home fa-3x home" routerlink = '/'></i>
   </div>
   <div class="content">
     <router-outlet></router-outlet>
