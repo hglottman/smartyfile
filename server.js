@@ -6,6 +6,7 @@ const bodyParser = require('body-parser');
 
 // Get our API routes
 const loginApi = require('./server/routes/login_api');
+const fileApi = require('./server/routes/file_api');
 const foldersApi = require('./server/routes/folder_api');
 
 const app = express();
@@ -22,6 +23,7 @@ app.use(express.static(path.join(__dirname, 'node_modules')));
 // Set our api routes
 // app.use('/', api)
 app.use('/login_api', loginApi);
+app.use('/file_api', fileApi);
 app.use('/folder_api', foldersApi);
 
 

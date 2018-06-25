@@ -1,5 +1,10 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import {Component} from '@angular/core';
+import {MatCardModule} from '@angular/material/card';
+import { FolderComponent } from './folder/folder.component';
+import { FileUnitComponent } from './file-unit/file-unit.component';
+import { AllFilesComponent } from './all-files/all-files.component';
 import { Routes, RouterModule } from '@angular/router';
 import { AppComponent } from './app.component';
 import { FolderComponent } from './folder/folder.component';
@@ -19,13 +24,16 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { FolderService } from './folder.service';
 import { AddfolderComponent } from './addfolder/addfolder.component';
 
+
 @NgModule({
   declarations: [
     AppComponent,
     FolderComponent,
-    AddfolderComponent
+    FileUnitComponent,
+    AllFilesComponent
   ],
   imports: [
+    MatCardModule,
     BrowserModule,
     HttpClientModule,
     MatSelectModule,
