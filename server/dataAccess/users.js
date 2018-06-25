@@ -8,12 +8,12 @@ class User_Model {
 
         this.user = smartyfile.define('Login', {
             user_id: { type: Sequelize.INTEGER, primaryKey: true },
-            folder_id: { type: Sequelize.INTEGER },
             first_name: { type: Sequelize.STRING },
             last_name: { type: Sequelize.STRING },
             user_name: { type: Sequelize.STRING },
             password: { type: Sequelize.STRING },
-            email_adress: { type: Sequelize.STRING }
+            email_adress: { type: Sequelize.STRING },
+            is_active: {type: Sequelize.BOOLEAN}
 
         }, {
                 freezeTableName: { type: true }
