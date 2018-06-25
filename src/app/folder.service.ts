@@ -8,16 +8,11 @@ import { File } from './file';
 })
 export class FolderService {
 
-  // allFolders: Array<Folder>;
-  // allFoldersSubject: Subject<Folder[]> = new Subject<Folder[]>();
-  // allFoldersObservable: Observable<Folder[]>;
-
   allFiles: Array<File>;
   allFilesSubject: Subject<File[]> = new Subject<File[]>();
   allFilesObservable: Observable<File[]>;
 
   constructor(private http: HttpClient) {
-    // this.allFoldersObservable = this.allFoldersSubject.asObservable();
     this.allFilesObservable = this.allFilesSubject.asObservable();
 
   }
