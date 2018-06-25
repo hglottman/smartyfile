@@ -21,15 +21,33 @@ class Folder_Model {
     }
 
     getUserFolders(id) {
-        return this.folder.findAll({ where: { user_id: id } }).then(data => {
+        return this.folder.findAll({ where: { user_id: id, is_active: true } }).then(data => {
             return data;
         }, err => {
             console.error(err)
         });
     }
+
+    deleteFolder(id) {
+        console.log(folder_id);
+        return this.folder.update(
+            { is_active: false },
+            {
+                where: { folder_id: id }
+            }).then(() => {
+                return this.folder.findAll({ where: { user_id: 1, is_active: true } }).then(data => {
+                    return data;
+                }, err => {
+                    console.error(err)
+                });
+            })
+    }
+
+    addNewFolder(newFolder, id) {
+        console.log(id);
+        return this.folder.create(newFolder)
+    }
 }
-
-
 
 
 var folder = new Folder_Model();

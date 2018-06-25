@@ -1,7 +1,8 @@
 .folders-grid {
     display:grid;
-    grid-template: minmax(250px, auto) / repeat(4,1fr);
+    grid-template: 200px 200px /  repeat(4,1fr);
     grid-gap: 10px;
+    padding-top: 10px;
 }
 
 .addfile-btn {
@@ -22,19 +23,20 @@
 .folderName {
     grid-row: 2 / 3;
     grid-column: 1 / -1;
-    font-size: 50px;
-    text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
+    font-size: 35px;
     margin: auto;
-    color: white;
-    font-family: 'Times New Roman', Times, serif;
+    padding: 2%;
+    color: rgb(20, 7, 54);
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
    
     
 }
 
 
 .folder {
+    box-sizing: border-box;
     display:grid;
-    grid-template: 25% 50% 25% / repeat(3, 1fr);
+    grid-template: 10% 65% 25% / repeat(3, 1fr);
     width: 90%;
     height: 80%;
     margin: auto;
@@ -46,10 +48,10 @@
 
 .folder:before {
     content: '';
-    width: 50%;
+    width: 40%;
     height: 12px;
     border-radius: 0 20px 0 0;
-    background-color: #b4b3b0;
+    background-color: #777673;
     position: absolute;
     top: -12px;
     left: 0px;
