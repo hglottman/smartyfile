@@ -9,7 +9,7 @@
     display: grid;
     grid-template: auto / repeat(12, 1fr);
     grid-row: 1 / 2;
-    background-color: rgb(96, 51, 202);
+    background-color: rgb(17, 17, 63);
     width: 100%;
     height: 70px;
     border-radius: 10px 10px 0 0;
@@ -30,7 +30,7 @@
 }
 
 .header button {
-    background-color: rgb(96, 51, 202);
+    background-color: rgb(17, 17, 63);
     width: 95%;
     height:95%;
     color: white;

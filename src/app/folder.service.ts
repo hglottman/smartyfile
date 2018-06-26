@@ -27,13 +27,14 @@ export class FolderService {
   }
 
 
-  getAllFiles(): any {
-    const folder_id = 1;
+  getAllFiles(folder_id): any {
     const observable = this.http.get<File[]>('/file_api/' + folder_id);
     observable.subscribe((data) => {
       this.allFiles = data;
       this.allFilesSubject.next(data);
     });
+
+    return observable;
   }
 
   getFile(file_id) {
@@ -42,23 +43,23 @@ export class FolderService {
 
   addFile(newFile: File): void {
     this.http.post<File>('/file_api', { file: newFile }).subscribe(() => {
-      this.getAllFiles();
+      // this.getAllFiles();
     });
   }
 
   deleteFile(file_id) {
     this.http.delete<File>('/file_api/' + file_id).subscribe(() => {
-      this.getAllFiles();
+      // this.getAllFiles();
     });
   }
 
   editFile(updatedFile) {
     this.http.put<File>('/file_api/' + updatedFile.file_id, { file: updatedFile }).subscribe(() => {
-      this.getAllFiles();
+      // this.getAllFiles();
     });
   }
 
-}
+
   getUserFolders(id) {
     this.http.get<Array<Folder>>('/folder_api/' + id).subscribe((data) => {
       console.log(data);
@@ -68,7 +69,6 @@ export class FolderService {
   }
 
   deleteFolder(folder_id) {
-    console.log('im on delete function in the service');
     this.http.delete<Folder[]>('/folder_api/delete/'+ folder_id).subscribe(data => {
       this.allFolders = data;
       this.allFoldersSubject.next(this.allFolders);

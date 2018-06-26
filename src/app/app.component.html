@@ -9,7 +9,7 @@
     <div class="addNewFolder" *ngIf="isActive === true">
         <app-addfolder></app-addfolder>
     </div>
-    <i class="fa fa-home fa-3x home" routerlink = '/'></i>
+    <button mat-button class="home" routerLink = "/"><i class="fa fa-home fa-3x" ></i></button>
   </div>
   <div class="content">
     <router-outlet></router-outlet>

@@ -13,16 +13,16 @@ export class AllFilesComponent implements OnInit {
 
   files = new Array<File>();
 
-  constructor(private folderService: FolderService) {
-    this.folderService.allFilesObservable.subscribe((files) => {
-      this.files = files;
-      console.log(this.files);
-   });
-  }
+  constructor(private folderService: FolderService,  private route : ActivatedRoute) {}
 
     ngOnInit() {
-       this.folderService.getAllFiles();
-      console.log(this.files);
+      this.route.params.subscribe(params => {
+          this.folderService.getAllFiles(params.id);
+        });
+          this.folderService.allFilesObservable.subscribe((files) => {
+        this.files = files;
+        console.log(this.files);
+     });
   }
 
 }

@@ -7,13 +7,11 @@ import { FileUnitComponent } from './file-unit/file-unit.component';
 import { AllFilesComponent } from './all-files/all-files.component';
 import { Routes, RouterModule } from '@angular/router';
 import { AppComponent } from './app.component';
-import { FolderComponent } from './folder/folder.component';
 import { AppRoutingModule } from './/app-routing.module';
 import { AngularFontAwesomeModule } from 'angular-font-awesome';
 import { MatToolbarModule} from '@angular/material/toolbar';
 import {MatInputModule} from '@angular/material/input';
 import {MatCheckboxModule} from '@angular/material/checkbox';
-import {MatCardModule} from '@angular/material/card';
 import {MatButtonModule} from '@angular/material/button';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import { FormsModule } from '@angular/forms';
@@ -23,6 +21,8 @@ import {MatDialogModule} from '@angular/material/dialog';
 import { ReactiveFormsModule } from '@angular/forms';
 import { FolderService } from './folder.service';
 import { AddfolderComponent } from './addfolder/addfolder.component';
+import { DialogComponent } from './dialog/dialog.component';
+
 
 
 @NgModule({
@@ -30,7 +30,9 @@ import { AddfolderComponent } from './addfolder/addfolder.component';
     AppComponent,
     FolderComponent,
     FileUnitComponent,
-    AllFilesComponent
+    AllFilesComponent,
+    AddfolderComponent,
+    DialogComponent
   ],
   imports: [
     MatCardModule,
@@ -49,6 +51,7 @@ import { AddfolderComponent } from './addfolder/addfolder.component';
     AppRoutingModule
   ],
   providers: [FolderService],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+  entryComponents: [DialogComponent]
 })
 export class AppModule { }

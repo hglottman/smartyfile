@@ -1,0 +1,17 @@
+.files-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-rows: 100px repeat(auto-fit, auto);
+}
+
+.file-card {
+    box-sizing: border-box;
+    width: 100%;
+    height: 100%;
+    border-radius: 10px;
+    padding:5%;
+}
+
+
+
+
