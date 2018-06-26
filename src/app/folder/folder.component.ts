@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FolderService } from '../folder.service';
 import { Folder } from '../folder';
+import { MatDialog, MatDialogConfig } from '@angular/material';
+import { DialogComponent } from '../dialog/dialog.component';
 
 @Component({
   selector: 'app-folder',
@@ -12,7 +14,7 @@ export class FolderComponent implements OnInit {
   public userFolders : Folder[];
   public newFolder : Folder;
   public userId = 1;
-  constructor(private folderService : FolderService) {
+  constructor(private folderService : FolderService, private dialog : MatDialog) {
 
    }
 
@@ -27,8 +29,21 @@ export class FolderComponent implements OnInit {
     this.folderService.deleteFolder(folder_id);
   }
 
-  addNewFolder() {
-    
+  getUserFiles(folder_id) {
+    this.folderService.getAllFiles(folder_id);
   }
+
+  openDialog(folder) {
+    let folder_id = folder.folder_id;
+    const dialogConfig = new MatDialogConfig();
+
+    dialogConfig.disableClose = true;
+    dialogConfig.autoFocus = true;
+    dialogConfig.data = {
+        folder_id: folder_id,
+    };
+
+    this.dialog.open(DialogComponent, dialogConfig);
+}
 
 }

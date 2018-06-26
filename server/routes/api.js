@@ -17,4 +17,4 @@ router.get('/requiredParamRoute/:field', (req, res) => {
     res.send(JSON.stringify(`You sent ${params}`))
   })
 
-module.exports = router
+module.exports = router;

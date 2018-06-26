@@ -11,14 +11,12 @@ import { FileUnitComponent } from './file-unit/file-unit.component';
 import { AllFilesComponent } from './all-files/all-files.component';
 import { Routes, RouterModule } from '@angular/router';
 import { AppComponent } from './app.component';
-import { FolderComponent } from './folder/folder.component';
 import { AppRoutingModule } from './/app-routing.module';
 import { AngularFontAwesomeModule } from 'angular-font-awesome';
 import { MatToolbarModule} from '@angular/material/toolbar';
 import {MatInputModule} from '@angular/material/input';
 import {MatCheckboxModule} from '@angular/material/checkbox';
 import {MatCardModule} from '@angular/material/card';
-
 import {MatTableModule} from '@angular/material/table';
 import {MatToolbarModule} from '@angular/material/toolbar';
 import {MatButtonModule} from '@angular/material/button';
@@ -40,6 +38,9 @@ import {MatDialogModule} from '@angular/material/dialog';
 import { ReactiveFormsModule } from '@angular/forms';
 import { FolderService } from './folder.service';
 import { AddfolderComponent } from './addfolder/addfolder.component';
+import { DialogComponent } from './dialog/dialog.component';
+import { FolderdialogComponent } from './folderdialog/folderdialog.component';
+
 
 
 @NgModule({
@@ -49,8 +50,10 @@ import { AddfolderComponent } from './addfolder/addfolder.component';
     LoginComponent,
     SignupComponent
     FileUnitComponent,
-    AllFilesComponent
-
+    AllFilesComponent,
+    AddfolderComponent,
+    DialogComponent,
+    FolderdialogComponent
   ],
   imports: [
     MatCardModule,
@@ -77,7 +80,8 @@ import { AddfolderComponent } from './addfolder/addfolder.component';
   entryComponents:[SignupComponent,LoginComponent]
 
   providers: [FolderService],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+  entryComponents: [DialogComponent]
 
 })
 export class AppModule { }

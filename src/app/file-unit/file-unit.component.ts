@@ -2,6 +2,8 @@ import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { File } from '../file';
 import { FolderService } from '../folder.service';
 import { AllFilesComponent } from '../all-files/all-files.component';
+import { MatDialogConfig, MatDialog } from '@angular/material';
+import { DialogComponent } from '../dialog/dialog.component';
 
 @Component({
   selector: 'app-file-unit',
@@ -13,11 +15,23 @@ export class FileUnitComponent implements OnInit {
   @Input() file: File = new File();
 
 
-  constructor() { }
+  constructor(private dialog : MatDialog) { }
 
   ngOnInit() {
-    console.log(this.file);
+    
   }
+
+  openDialog() {
+  
+    const dialogConfig = new MatDialogConfig();
+
+    dialogConfig.disableClose = true;
+    dialogConfig.autoFocus = true;
+    console.log(this.file);
+    dialogConfig.data = this.file;
+
+    this.dialog.open(DialogComponent, dialogConfig);
+}
 
 
 }
