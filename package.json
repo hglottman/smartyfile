@@ -26,10 +26,16 @@
     "bootstrap": "^4.1.1",
     "concurrently": "^3.6.0",
     "core-js": "^2.5.4",
+    "cors": "^2.8.4",
     "express": "^4.16.3",
-    "material-design-icons": "^3.0.
+
+    "express-session": "^1.15.6",
+    "material-design-icons": "^3.0.1",
     "mysql2": "^1.5.3",
     "nodemon": "^1.17.5",
+    "passport": "^0.4.0",
+    "passport-local": "^1.0.0",
+
     "rxjs": "^6.0.0",
     "sequelize": "^4.38.0",
     "zone.js": "^0.8.26"
