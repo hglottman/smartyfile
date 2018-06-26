@@ -3,7 +3,9 @@ var Sequelize=require('sequelize');
 
  class DataAccess {
     constructor(){
+
         this.connection = new Sequelize('smartyfile', 'root', '13245342', {
+
             host: 'localhost',
             dialect: 'mysql',
             operatorsAliases: false, // prevent string deprication
