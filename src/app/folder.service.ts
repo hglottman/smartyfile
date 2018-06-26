@@ -42,8 +42,8 @@ export class FolderService {
   }
 
   addFile(newFile: File): void {
-    this.http.post<File>('/file_api', { file: newFile }).subscribe(() => {
-      // this.getAllFiles();
+    this.http.post<File>('/file_api/', { file: newFile }).subscribe(() => {
+  
     });
   }
 

@@ -45,7 +45,7 @@ class File_Model {
         return this.file.create({
             the_file: newFile.the_file,
             file_id: null,
-            file_name: newFile.firstName,
+            file_name: newFile.file_name,
             folder_id: newFile.folder_id,
             upload_date: newFile.upload_date,
             start_date: newFile.start_date,

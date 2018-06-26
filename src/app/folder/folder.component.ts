@@ -33,15 +33,14 @@ export class FolderComponent implements OnInit {
     this.folderService.getAllFiles(folder_id);
   }
 
-  openDialog() {
+  openDialog(folder) {
+    let folder_id = folder.folder_id;
     const dialogConfig = new MatDialogConfig();
 
     dialogConfig.disableClose = true;
     dialogConfig.autoFocus = true;
-
     dialogConfig.data = {
-        id: 1,
-        title: 'Angular For Beginners'
+        folder_id: folder_id,
     };
 
     this.dialog.open(DialogComponent, dialogConfig);

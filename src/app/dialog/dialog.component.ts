@@ -1,6 +1,8 @@
 import { Component, OnInit, Inject } from '@angular/core';
 import { MAT_DIALOG_DATA, MatDialogRef } from "@angular/material";
 import { FormGroup, FormBuilder } from '@angular/forms';
+import { File } from '../file';
+import { FolderService } from '../folder.service';
 
 @Component({
   selector: 'app-dialog',
@@ -10,25 +12,31 @@ import { FormGroup, FormBuilder } from '@angular/forms';
 export class DialogComponent implements OnInit {
 
   form: FormGroup;
-  description: any;
+  description: File;
 
-  constructor(
+
+  constructor(  
     private fb: FormBuilder,
     private dialogRef: MatDialogRef<DialogComponent>,
-    @Inject(MAT_DIALOG_DATA) data) {
-    this.description = data;
+    private folderService : FolderService,
+    @Inject(MAT_DIALOG_DATA) data)
+     {
+       console.log(data.folder_id);
+       this.description = new File();
+      this.description.folder_id = data.folder_id;
+      this.description.upload_date = new Date();
   }
 
+
   ngOnInit() {
-    this.form = this.fb.group({
-      id: this.description.id,
-      firstName: this.description.firstName,
-      lastName: this.description.lastName
-    });
+
   }
 
   save() {
-    this.dialogRef.close(this.form.value);
+    console.log(this.description)
+    this.dialogRef.close(
+      this.folderService.addFile(this.description)
+    );
   }
 
   close() {
