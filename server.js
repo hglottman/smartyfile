@@ -12,7 +12,11 @@ const userInc = require('./server/dataAccess/users');
 // Get our API routes
 ///////
 const loginApi = require('./server/routes/login_api');
-////////
+
+const fileApi = require('./server/routes/file_api');
+const foldersApi = require('./server/routes/folder_api');
+
+
 const app = express();
 
 // Parsers for POST data
@@ -38,7 +42,7 @@ app.use(passport.session());
 // Set our api routes
 // app.use('/', api)
 app.use('/login_api', loginApi);
-////
+
 passport.serializeUser(function (user, done) {
   console.log(user);
   return done(null, user);
@@ -52,6 +56,10 @@ passport.deserializeUser(function(user, done) {
 app.get('/userDetails', function (req, res){
   res.send(req.user);
 });
+
+app.use('/file_api', fileApi);
+app.use('/folder_api', foldersApi);
+
 
 app.get('/userDetails', function (req, res){
   if (req.isAuthenticated()){

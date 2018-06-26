@@ -1,9 +1,22 @@
-import { BrowserModule } from '@angular/platform-browser';
+import 
+
+
+{ BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { HttpClientModule } from '@angular/common/http';
-import {MatDialogModule} from '@angular/material/dialog';
-import {MatInputModule} from '@angular/material';
 import { FormsModule } from '@angular/forms';
+import {Component} from '@angular/core';
+import {MatCardModule} from '@angular/material/card';
+import { FolderComponent } from './folder/folder.component';
+import { FileUnitComponent } from './file-unit/file-unit.component';
+import { AllFilesComponent } from './all-files/all-files.component';
+import { Routes, RouterModule } from '@angular/router';
+import { AppComponent } from './app.component';
+import { FolderComponent } from './folder/folder.component';
+import { AppRoutingModule } from './/app-routing.module';
+import { AngularFontAwesomeModule } from 'angular-font-awesome';
+import { MatToolbarModule} from '@angular/material/toolbar';
+import {MatInputModule} from '@angular/material/input';
+import {MatCheckboxModule} from '@angular/material/checkbox';
 import {MatCardModule} from '@angular/material/card';
 
 import {MatTableModule} from '@angular/material/table';
@@ -22,6 +35,12 @@ import { FolderComponent } from './folder/folder.component';
 import { LoginComponent } from './login/login.component';
 import { SignupComponent } from './signup/signup.component';
 import { AppRoutingModule } from './app-routing.module';
+import { HttpClientModule } from '@angular/common/http';
+import {MatDialogModule} from '@angular/material/dialog';
+import { ReactiveFormsModule } from '@angular/forms';
+import { FolderService } from './folder.service';
+import { AddfolderComponent } from './addfolder/addfolder.component';
+
 
 @NgModule({
   declarations: [
@@ -29,8 +48,12 @@ import { AppRoutingModule } from './app-routing.module';
     FolderComponent,
     LoginComponent,
     SignupComponent
+    FileUnitComponent,
+    AllFilesComponent
+
   ],
   imports: [
+    MatCardModule,
     BrowserModule,
     HttpClientModule,
     MatDialogModule,
@@ -48,8 +71,13 @@ import { AppRoutingModule } from './app-routing.module';
     MatIconModule
     
   ],
+
   providers: [],
   bootstrap: [AppComponent],
   entryComponents:[SignupComponent,LoginComponent]
+
+  providers: [FolderService],
+  bootstrap: [AppComponent]
+
 })
 export class AppModule { }

@@ -6,5 +6,14 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
+
+  isActive = false;
   title = 'app';
+
+  toggleAddingNewFolder() {
+
+    this.isActive === false ? this.isActive = true : this.isActive = false;
+  }
 }
+
+
