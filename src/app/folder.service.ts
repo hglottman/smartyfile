@@ -43,7 +43,6 @@ export class FolderService {
 
   addFile(newFile: File): void {
     this.http.post<File>('/file_api/', { file: newFile }).subscribe(() => {
-  
     });
   }
 
@@ -62,25 +61,27 @@ export class FolderService {
 
   getUserFolders(id) {
     this.http.get<Array<Folder>>('/folder_api/' + id).subscribe((data) => {
-      console.log(data);
+      // console.log(data);
       this.allFolders = data;
       this.allFoldersSubject.next(this.allFolders);
-    })
+    });
   }
 
   deleteFolder(folder_id) {
-    this.http.delete<Folder[]>('/folder_api/delete/'+ folder_id).subscribe(data => {
+    this.http.delete<Folder[]>('/folder_api/delete/' + folder_id).subscribe(data => {
       this.allFolders = data;
       this.allFoldersSubject.next(this.allFolders);
-    })
+    });
   }
 
   addNewFolder(newFolder, id) {
       this.http.post<Folder[]>('/folder_api/add_folder/' + id, { folder: newFolder}).subscribe((allfolders) => {
-        console.log(allfolders)
+        console.log(allfolders);
         this.allFoldersSubject.next(allfolders);
-      })
+      });
     }
+
+
   }
 
 

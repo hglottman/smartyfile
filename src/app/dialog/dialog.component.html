@@ -2,27 +2,27 @@
 
 <mat-dialog-content>
   
-    <mat-form-field>
+    <div>
         <input matInput
                 placeholder="File Name"
                 [(ngModel)]="description.file_name">
-    </mat-form-field>
+    </div>
     <br>
-    <mat-form-field>
+    <div>
         <input matInput
                 placeholder="Validity Start Date"
                [(ngModel)]="description.start_date">
-    </mat-form-field>
+    </div>
     <br>
-    <mat-form-field>
+    <div>
         <input matInput
                 placeholder="Validity End Date"
                 [(ngModel)]="description.end_date">
-    </mat-form-field>
+    </div>
     <br>
-    <mat-form-field>
-        <input matInput placeholder="upload file (not working)">
-    </mat-form-field>
+    <div>
+        <app-upload-files (fileUploaded)="handleFileUploaded($event)"></app-upload-files>
+    </div>
  
 </mat-dialog-content>
 

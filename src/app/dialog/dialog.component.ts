@@ -1,5 +1,5 @@
 import { Component, OnInit, Inject } from '@angular/core';
-import { MAT_DIALOG_DATA, MatDialogRef } from "@angular/material";
+import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material';
 import { FormGroup, FormBuilder } from '@angular/forms';
 import { File } from '../file';
 import { FolderService } from '../folder.service';
@@ -15,12 +15,11 @@ export class DialogComponent implements OnInit {
   description: File;
 
 
-  constructor(  
+  constructor(
     private fb: FormBuilder,
     private dialogRef: MatDialogRef<DialogComponent>,
-    private folderService : FolderService,
-    @Inject(MAT_DIALOG_DATA) data)
-     {
+    private folderService: FolderService,
+    @Inject(MAT_DIALOG_DATA) data) {
        console.log(data.folder_id);
        this.description = new File();
       this.description.folder_id = data.folder_id;
@@ -33,7 +32,7 @@ export class DialogComponent implements OnInit {
   }
 
   save() {
-    console.log(this.description)
+    console.log(this.description);
     this.dialogRef.close(
       this.folderService.addFile(this.description)
     );
@@ -42,5 +41,14 @@ export class DialogComponent implements OnInit {
   close() {
     this.dialogRef.close();
   }
- 
+
+  handleFileUploaded(uploadedFile) {
+    console.log('in handleFileUploaded, child class');
+    // console.log(uploadedFile);
+    this.description.the_file = uploadedFile;
+    // console.log(this.description);
+
+
+  }
+
 }

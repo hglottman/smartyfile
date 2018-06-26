@@ -22,6 +22,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { FolderService } from './folder.service';
 import { AddfolderComponent } from './addfolder/addfolder.component';
 import { DialogComponent } from './dialog/dialog.component';
+import { UploadFilesComponent } from './upload-files/upload-files.component';
 
 
 
@@ -32,7 +33,8 @@ import { DialogComponent } from './dialog/dialog.component';
     FileUnitComponent,
     AllFilesComponent,
     AddfolderComponent,
-    DialogComponent
+    DialogComponent,
+    UploadFilesComponent
   ],
   imports: [
     MatCardModule,
