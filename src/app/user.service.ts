@@ -3,6 +3,7 @@ import { User } from './user';
 import { Subject } from 'rxjs';
 import { Observable } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
+import { RouterModule, Routes, Router } from '@angular/router';
 
 
 
@@ -10,11 +11,11 @@ import { HttpClient } from '@angular/common/http';
   providedIn: 'root'
 })
 export class UserService {
-  users:Array<User>
-  user:User
+  users: Array<User> = new Array<User>();
+  user: User
   public userUpdate: Observable<User[]>
   public userSubject: Subject<User[]>
-  constructor(private http: HttpClient) {
+  constructor(private http: HttpClient, private router: Router) {
     this.userSubject = new Subject<User[]>();
     this.userUpdate = this.userSubject.asObservable()
   }
@@ -24,8 +25,21 @@ export class UserService {
   //     // this.userSubject.next()
   //   })
   // }
-  createNewUser(userData:User){
-    this.http.post<User>('/loginApi/addUser',{userData:userData}).subscribe((data)=>{
+
+  Login(username, password) {
+    this.http.post('/login', { username: username, password: password },{responseType: 'text'}).subscribe((data) => {
+      console.log(data)
+      if (data == 'false') {
+        this.router.navigate([''])        
+        alert('user name or password not correct, Please try again')
+      } else {
+        this.router.navigate(['folder'])
+      }
+    })
+  }
+  createNewUser(user: User) {
+    this.http.post<User>('/login_api/addUser', { user: user }).subscribe((data) => {
+      console.log(data)
       this.users.push(data);
       this.userSubject.next(this.users)
     })

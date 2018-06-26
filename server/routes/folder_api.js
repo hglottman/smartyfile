@@ -1,7 +1,7 @@
 const express = require('express');
 const router = express.Router();
 // const companyModel = require('../dataAccess/companys').company;
-const company =  require('../dataAccess/companys');
+const folder =  require('../dataAccess/folders');
 
 
 router.get('/', (req, res) => {

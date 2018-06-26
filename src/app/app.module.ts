@@ -9,8 +9,10 @@ import {MatCardModule} from '@angular/material/card';
 import {MatTableModule} from '@angular/material/table';
 import {MatToolbarModule} from '@angular/material/toolbar';
 import {MatButtonModule} from '@angular/material/button';
+import { RouterModule, Routes } from '@angular/router';
 
 import {MatSelectModule} from '@angular/material/select';
+import {MatIconModule} from '@angular/material/icon';
 
 import {MatFormFieldModule} from '@angular/material/form-field';
 import {NoopAnimationsModule} from '@angular/platform-browser/animations';
@@ -19,6 +21,7 @@ import { AppComponent } from './app.component';
 import { FolderComponent } from './folder/folder.component';
 import { LoginComponent } from './login/login.component';
 import { SignupComponent } from './signup/signup.component';
+import { AppRoutingModule } from './app-routing.module';
 
 @NgModule({
   declarations: [
@@ -40,7 +43,10 @@ import { SignupComponent } from './signup/signup.component';
     MatButtonModule,
     MatSelectModule,
     FormsModule,
-    MatCardModule
+    MatCardModule,
+    AppRoutingModule,
+    MatIconModule
+    
   ],
   providers: [],
   bootstrap: [AppComponent],

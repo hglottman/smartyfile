@@ -52,21 +52,21 @@ class User_Model {
   }
 
 
-  // getOneUser(userName, password) {
-  //   return this.user.findOne({
-  //     where: {
-  //       user_name: userName,
-  //       password: password
-  //     }
-  //   }).then((data) => {
-  //     return data
-  //   }, err => {
-  //     console.error(err)
-  //   })
-  // }
+  getOneUser(userName, password) {
+    return this.user.findOne({
+      where: {
+        user_name: userName,
+        password: password
+      }
+    }).then((data) => {
+      return data
+    }, err => {
+      console.error(err)
+    })
+  }
   createUser(userData) {
     console.log(userData)
-    return this.user.create({
+    return this.user.build({
       user_id: null,
       first_name: userData.first_name,
       last_name: userData.last_name,
@@ -74,7 +74,7 @@ class User_Model {
       password: userData.password,
       email_adress: userData.email_adress,
       is_active: userData.is_active
-    }).then((data) => {
+    }).save().then((data) => {
       return data
     }, err => {
       console.error(err)
@@ -86,17 +86,3 @@ class User_Model {
 var userInc = new User_Model();
 
 module.exports = userInc;
-
-
-
-
-
-// getAllCompanys() {
-//     var companies;
-//   return  this.company.findAll().then(data => {
-//         return data;
-
-//     }, err => {
-//         console.error(err)
-//     });
-// }

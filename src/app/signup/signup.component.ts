@@ -15,6 +15,7 @@ import { MatTableDataSource } from '@angular/material';
 })
 export class SignupComponent implements OnInit {
   user:User = new User()
+  hide = true;  
   constructor(public dialogRef: MatDialogRef<SignupComponent>,
     @Inject(MAT_DIALOG_DATA) public data: any,public userService:UserService) { }
 

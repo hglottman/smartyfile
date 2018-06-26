@@ -4,6 +4,7 @@ import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material';
 import {User} from '../user'
 import {SignupComponent} from '../signup/signup.component'
 import { MatFormFieldModule } from '@angular/material/form-field';
+import { RouterModule, Routes ,Router} from '@angular/router';
 
 
 
@@ -14,18 +15,25 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 })
 export class LoginComponent implements OnInit {
   user:User
-  constructor(public userService:UserService,public dialog: MatDialog) { }
+  hide = true;
+  username;
+  password;
+  constructor(public userService:UserService,public dialog: MatDialog,private router:Router) { }
 
   ngOnInit() {
   }
   openDialog(user) {
     console.log(user);
     let dialogRef = this.dialog.open(SignupComponent, {
+     
       data:{user: user}
     });
   }
   login(){
-    
+    this.userService.Login(this.username,this.password)
+    // this.router.navigate(['folder'])
   }
+
+  
 
 }
