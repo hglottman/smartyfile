@@ -11,8 +11,8 @@ import { FolderService } from '../folder.service';
 })
 export class DialogComponent implements OnInit {
 
-  form: FormGroup;
   description: File;
+  update: boolean;
 
 
   constructor(  
@@ -21,10 +21,9 @@ export class DialogComponent implements OnInit {
     private folderService : FolderService,
     @Inject(MAT_DIALOG_DATA) data)
      {
-       console.log(data.folder_id);
+      data.upload_date === undefined ? this.update = false : this.update = true;
        this.description = new File();
-      this.description.folder_id = data.folder_id;
-      this.description.upload_date = new Date();
+      this.description = data;
   }
 
 
@@ -34,9 +33,15 @@ export class DialogComponent implements OnInit {
 
   save() {
     console.log(this.description)
-    this.dialogRef.close(
-      this.folderService.addFile(this.description)
-    );
+    if(this.update === true) {
+      console.log("got here to the if statment")
+      this.dialogRef.close(
+        this.folderService.editFile(this.description)
+      )} else {
+        this.dialogRef.close(
+          this.folderService.addFile(this.description)
+        )
+      }
   }
 
   close() {

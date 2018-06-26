@@ -54,17 +54,21 @@ class File_Model {
         });
     }
 
-    updateFile(file_id, fileToUpdate) {
-        return this.file.update(fileToUpdate, {
-            where: {
-                file_id: file_id
-            }
-        }).then((req, res) => {
-            return this.getFile(file_id);
-        })
-        err => {
+    updateFile(fileToUpdate) {
+        return this.file.update(
+            fileToUpdate, 
+            {where: {file_id: fileToUpdate.file_id }
+        }).then (() => {
+            return this.file.findAll({
+                where: {
+                    folder_id: fileToUpdate.folder_id
+                }
+        }).then((data) => {
+            return data
+        }, err => {
             console.error(err)
-        }
+        })
+        })
     }
 
     deleteFile(file_id, folder_id) {

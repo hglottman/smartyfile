@@ -43,7 +43,6 @@ export class FolderService {
 
   addFile(newFile: File): void {
     this.http.post<File>('/file_api/', { file: newFile }).subscribe(() => {
-  
     });
   }
 
@@ -54,8 +53,8 @@ export class FolderService {
   }
 
   editFile(updatedFile) {
-    this.http.put<File>('/file_api/' + updatedFile.file_id, { file: updatedFile }).subscribe(() => {
-      // this.getAllFiles();
+    this.http.put<File[]>('/file_api/', { newFile: updatedFile }).subscribe((data) => {
+      this.allFilesSubject.next(data)
     });
   }
 

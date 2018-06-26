@@ -26,10 +26,10 @@ router.post('/', (req, res) => {
   }
 })
 
-router.put('/:folder_id/:file_id', (req, res) => {
-  fileToUpdate = req.body
-  file_id = req.params.file_id
-  fileModel.updateFile(file_id, fileToUpdate).then((data) => {
+router.put('/', (req, res) => {
+  fileToUpdate = req.body.newFile;
+  console.log(fileToUpdate);
+  fileModel.updateFile(fileToUpdate).then((data) => {
     res.send(JSON.stringify(data))
   })
   err => {

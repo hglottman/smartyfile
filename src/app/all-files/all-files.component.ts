@@ -3,6 +3,8 @@ import { FolderService } from '../folder.service';
 import { File } from '../file';
 import { ActivatedRoute, Router } from '@angular/router';
 import { FileUnitComponent } from '../file-unit/file-unit.component';
+import { MatDialogConfig, MatDialog } from '@angular/material';
+import { DialogComponent } from '../dialog/dialog.component';
 
 @Component({
   selector: 'app-all-files',
@@ -13,7 +15,7 @@ export class AllFilesComponent implements OnInit {
 
   files = new Array<File>();
 
-  constructor(private folderService: FolderService,  private route : ActivatedRoute) {}
+  constructor(private folderService: FolderService,  private route : ActivatedRoute, private dialog : MatDialog) {}
 
     ngOnInit() {
       this.route.params.subscribe(params => {
@@ -23,6 +25,7 @@ export class AllFilesComponent implements OnInit {
         this.files = files;
         console.log(this.files);
      });
+
   }
 
 }
