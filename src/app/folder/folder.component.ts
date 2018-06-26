@@ -25,8 +25,8 @@ export class FolderComponent implements OnInit {
     })
   }
 
-  deleteFolder(folder_id: number) {
-    this.folderService.deleteFolder(folder_id);
+  deleteFolder(folder) {
+    this.folderService.deleteFolder(folder.folder_id);
   }
 
   getUserFiles(folder_id) {

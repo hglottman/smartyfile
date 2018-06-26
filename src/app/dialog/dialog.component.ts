@@ -16,7 +16,6 @@ export class DialogComponent implements OnInit {
 
 
   constructor(  
-    private fb: FormBuilder,
     private dialogRef: MatDialogRef<DialogComponent>,
     private folderService : FolderService,
     @Inject(MAT_DIALOG_DATA) data)

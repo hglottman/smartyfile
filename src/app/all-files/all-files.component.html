@@ -1,3 +1,4 @@
+<app-header></app-header>
 <div class='files-grid'>
       <div *ngFor="let file of files" class="file-card">
           <app-file-unit [file]="file" buttonText="See File" (buttonOnClick)="openFile($event)"></app-file-unit>

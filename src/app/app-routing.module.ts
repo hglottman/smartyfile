@@ -6,8 +6,8 @@ import {LoginComponent} from './login/login.component'
 import { AllFilesComponent } from './all-files/all-files.component';
 
 const routes: Routes = [
-  { path: 'folders', component: FolderComponent},
-   { path: 'file/:id', component: AllFilesComponent },
+  { path: 'folder', component: FolderComponent},
+   { path: 'folder/file/:id', component: AllFilesComponent },
   { path: '', component: LoginComponent},  
 
 ];

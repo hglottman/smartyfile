@@ -1,12 +1,15 @@
 .files-grid {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
-    grid-template-rows: 100px repeat(auto-fit, auto);
+    grid-template-rows:  repeat(auto-fit, auto);
+    background-color: rgba(134, 168, 243, 0.979);
+    min-height: 600px;
 }
 
 .file-card {
     box-sizing: border-box;
     width: 100%;
+    max-height: 400px;
     height: 100%;
     border-radius: 10px;
     padding:5%;

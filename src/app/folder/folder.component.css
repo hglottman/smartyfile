@@ -1,3 +1,12 @@
+.app-grid {
+    display: grid;
+    grid-template: auto  / 1fr;
+    background-color: rgba(134, 168, 243, 0.979);
+    min-height: 600px;
+    
+    
+}
+
 .folders-grid {
     display:grid;
     grid-template: 200px 200px /  repeat(4,1fr);
@@ -60,3 +69,6 @@
     top: -12px;
     left: 0px;
 }
+
+
+ 
