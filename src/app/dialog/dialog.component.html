@@ -9,9 +9,7 @@
     </mat-form-field>
     <br>
     <mat-form-field>
-        <input matInput
-                placeholder="Validity Start Date"
-               [(ngModel)]="description.start_date">
+            <material-datepicker [(date)]="yourModelDate"></material-datepicker>
     </mat-form-field>
     <br>
     <mat-form-field>

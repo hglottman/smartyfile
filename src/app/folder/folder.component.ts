@@ -14,6 +14,8 @@ export class FolderComponent implements OnInit {
   public userFolders : Folder[];
   public newFolder : Folder;
   public userId = 1;
+  public isActive = false;
+
   constructor(private folderService : FolderService, private dialog : MatDialog) {
 
    }
@@ -25,6 +27,12 @@ export class FolderComponent implements OnInit {
     })
   }
 
+  toggleAddingNewFolder() {
+
+    this.isActive === false ? this.isActive = true : this.isActive = false;
+    console.log(this.isActive);
+  }
+
   deleteFolder(folder) {
     this.folderService.deleteFolder(folder.folder_id);
   }
@@ -32,6 +40,8 @@ export class FolderComponent implements OnInit {
   getUserFiles(folder_id) {
     this.folderService.getAllFiles(folder_id);
   }
+
+  
 
   openDialog(folder) {
     let folder_id = folder.folder_id;
