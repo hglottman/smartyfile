@@ -17,6 +17,7 @@ export class HeaderComponent implements OnInit {
   }
   getLogOut(){
     this.userService.LogOut()
+    // this.router.navigated
     // .subscribe((data)=>{
     //   this.log = data
     //   this.router.navigate([''])
