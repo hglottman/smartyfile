@@ -13,7 +13,7 @@ import { RouterModule, Routes, Router } from '@angular/router';
 export class UserService {
   users: Array<User> = new Array<User>();
   user: User
-  currentUser:string;
+  currentUser;
   log;
   public userUpdate: Observable<User[]>
   public userSubject: Subject<User[]>
@@ -29,14 +29,14 @@ export class UserService {
   // }
 
   Login(username, password) {
-    this.http.post('/login', { username: username, password: password },{responseType: 'text'}).subscribe((data) => {
-      console.log(data)
-      if (data == "false") {
+    this.http.post('/login', { username: username, password: password }).subscribe((data) => {
+      if (data === false) {
         this.router.navigate([''])        
         alert('user name or password not correct, Please try again')
       } else {
         this.currentUser = data
         this.router.navigate(['folder'])
+        //need to check this function is we have issues with the login autherntication
       }
     })
   }
