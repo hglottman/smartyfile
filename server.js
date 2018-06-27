@@ -71,7 +71,7 @@ app.get('/userDetails', function (req, res){
 
 app.get('/logout', function (req, res) {
   req.logout();
-  res.send('Logged out!');
+  res.redirect('/');
 });
 // passport.use(new LocalStrategy(
 //   //    { passReqToCallback : true},

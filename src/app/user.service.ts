@@ -13,6 +13,8 @@ import { RouterModule, Routes, Router } from '@angular/router';
 export class UserService {
   users: Array<User> = new Array<User>();
   user: User
+  currentUser:string;
+  log;
   public userUpdate: Observable<User[]>
   public userSubject: Subject<User[]>
   constructor(private http: HttpClient, private router: Router) {
@@ -33,8 +35,16 @@ export class UserService {
         this.router.navigate([''])        
         alert('user name or password not correct, Please try again')
       } else {
+        this.currentUser = data
         this.router.navigate(['folder'])
       }
+    })
+  }
+  LogOut(){
+    return this.http.get('/logout',{responseType: 'text'}).subscribe((data)=>{
+      console.log(data)
+      this.log = data
+      this.router.navigate([''])
     })
   }
   createNewUser(user: User) {
