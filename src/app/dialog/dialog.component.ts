@@ -1,8 +1,11 @@
 import { Component, OnInit, Inject } from '@angular/core';
-import { MAT_DIALOG_DATA, MatDialogRef } from "@angular/material";
+import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material';
 import { FormGroup, FormBuilder } from '@angular/forms';
 import { File } from '../file';
 import { FolderService } from '../folder.service';
+import { FileSelectDirective, FileUploader } from 'ng2-file-upload';
+
+const uri = 'http://localhost:3000/file_api/upload';
 
 @Component({
   selector: 'app-dialog',
@@ -13,15 +16,21 @@ export class DialogComponent implements OnInit {
   description: File;
   update: boolean;
 
+uploader: FileUploader = new FileUploader({url: uri});
 
-  constructor(  
+attachmentList: any = [];
+
+  constructor(
     private dialogRef: MatDialogRef<DialogComponent>,
-    private folderService : FolderService,
-    @Inject(MAT_DIALOG_DATA) data)
-     {
+    private folderService: FolderService,
+    @Inject(MAT_DIALOG_DATA) data) {
       data.upload_date === undefined ? this.update = false : this.update = true;
        this.description = new File();
       this.description = data;
+
+      this.uploader.onCompleteItem = (item: any, response: any, status: any, headers: any) => {
+        this.attachmentList.push(JSON.parse(response));
+      };
   }
 
 
@@ -30,20 +39,20 @@ export class DialogComponent implements OnInit {
   }
 
   save() {
-    console.log(this.description)
-    if(this.update === true) {
-      console.log("got here to the if statment")
+    console.log(this.description);
+    if (this.update === true) {
+      console.log('got here to the if statment');
       this.dialogRef.close(
         this.folderService.editFile(this.description)
-      )} else {
+      ); } else {
         this.dialogRef.close(
           this.folderService.addFile(this.description)
-        )
+        );
       }
   }
 
   close() {
     this.dialogRef.close();
   }
- 
+
 }

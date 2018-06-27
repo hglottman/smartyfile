@@ -33,6 +33,7 @@ import { AddfolderComponent } from './addfolder/addfolder.component';
 import { DialogComponent } from './dialog/dialog.component';
 import { FolderdialogComponent } from './folderdialog/folderdialog.component';
 import { HeaderComponent } from './header/header.component';
+import { FileUploadModule } from 'ng2-file-upload';
 
 
 
@@ -50,6 +51,7 @@ import { HeaderComponent } from './header/header.component';
     HeaderComponent
   ],
   imports: [
+    FileUploadModule,
     MatCardModule,
     BrowserModule,
     HttpClientModule,
@@ -69,12 +71,11 @@ import { HeaderComponent } from './header/header.component';
     MatSidenavModule,
     MatDatepickerModule,
     MatNativeDateModule
-    
   ],
 
   providers: [FolderService],
   bootstrap: [AppComponent],
-  entryComponents:[SignupComponent,LoginComponent,DialogComponent]
+  entryComponents: [SignupComponent, LoginComponent, DialogComponent]
 
 })
 export class AppModule { }
