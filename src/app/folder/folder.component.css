@@ -1,17 +1,42 @@
 .app-grid {
     display: grid;
-    grid-template: auto  / 1fr;
+    grid-template: 65px 40px auto  / 1fr;
     background-color: rgba(134, 168, 243, 0.979);
     min-height: 600px;
-    
-    
+      
 }
 
+
+
+.folders-header {
+    grid-row: 2 / 3;
+    display: grid;
+    grid-template: 50px / repeat(10 ,1fr);
+}
+
+.addfolder-toggle {
+    background-color: rgb(66, 7, 121);
+    grid-column: 1 / 2;
+    height: 90%;
+    border-radius: 0 0 15px 15px;
+}
+
+.addfolder-action {
+
+    grid-column: 2 / 3;
+}
+
+.header {
+    grid-row: 1 / 2;
+}
+
+
+
 .folders-grid {
+    grid-row: 3 / 4;
     display:grid;
     grid-template: 200px 200px /  repeat(4,1fr);
     grid-gap: 10px;
-    padding-top: 10px;
 }
 
 .addfile-btn {

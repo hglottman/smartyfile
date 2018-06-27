@@ -37,10 +37,10 @@ router.put('/', (req, res) => {
   }
 })
 
-router.delete('/:folder_id/:file_id', (req, res) => {
-  var folder_id = req.params.folder_id
-  file_id = req.params.file_id
-  fileModel.deleteFile(file_id, folder_id).then(data => {
+router.delete('/:file_id', (req, res) => {
+ var file_id = req.params.file_id
+ console.log(file_id);
+  fileModel.deleteFile(file_id).then(data => {
     res.send(JSON.stringify(data))
   })
   err => {
