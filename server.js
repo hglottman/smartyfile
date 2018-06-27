@@ -34,26 +34,27 @@ app.use(expressSession({
   resave: false,
   saveUninitialized: false
 }));
+
+app.use(expressSession({ secret: 'thisIsASecret', resave: false, saveUninitialized: false }));
 app.use(passport.initialize());
 app.use(passport.session());
 //////
-
-
+passport.serializeUser(function (user, done) {
+  done(null, user);
+});
+passport.deserializeUser(function (user, done) {
+  done(null, user);
+});
 // Set our api routes
 // app.use('/', api)
 app.use('/login_api', loginApi);
 
-passport.serializeUser(function (user, done) {
-  console.log(user);
-  return done(null, user);
-});
 
-passport.deserializeUser(function(user, done) {
-  done(null, user);
-});
+
+
 //////
 
-app.get('/userDetails', function (req, res){
+app.get('/userDetails', function (req, res) {
   res.send(req.user);
 });
 
@@ -61,8 +62,8 @@ app.use('/file_api', fileApi);
 app.use('/folder_api', foldersApi);
 
 
-app.get('/userDetails', function (req, res){
-  if (req.isAuthenticated()){
+app.get('/userDetails', function (req, res) {
+  if (req.isAuthenticated()) {
     res.send(req.user);
   } else {
     res.redirect('/login');
@@ -71,7 +72,7 @@ app.get('/userDetails', function (req, res){
 
 app.get('/logout', function (req, res) {
   req.logout();
-  res.send('Logged out!');
+  res.redirect('/');
 });
 // passport.use(new LocalStrategy(
 //   //    { passReqToCallback : true},
@@ -87,15 +88,15 @@ app.get('/logout', function (req, res) {
 //   }
 // ));
 passport.use(new LocalStrategy(
-  function(username,password,done){
-    userInc.getOneUser(username,password).then((user)=>{
-      console.log(user)
+  function (username, password, done) {
+    userInc.getOneUser(username, password).then((user) => {
+      // console.log(user.username)
       // if(err){return done(err)}   
       // else if(!user){return done(null,false)
       // if(!user.verifyPassword(password)){return done(null,false)};
-      return done(null,user)
-    }
-    )}
+      return done(null, user)
+    })
+  }
 ))
 // passport.use(new LocalStrategy(
 //   function(username, password, done) {
@@ -116,13 +117,16 @@ passport.use(new LocalStrategy(
 //   res.send("nice")
 // })
 
-  app.post('/login', function(req, res, next){
-    passport.authenticate('local', function(err, user, info){
-      if(err){console.log('err is ' + err); return next(err)}
-      console.log(user)
-      res.send(user)
-    })(req, res, next)
-  })
+app.post('/login', function (req, res, next) {
+  passport.authenticate('local', function (err, user, info) {
+    if (err) {
+      console.log('err is ' + err);
+      return next(err)
+    }
+    console.log(user)
+    res.send(user)
+  })(req, res, next)
+})
 
 // app.post('/login', passport.authenticate('local', {
 //   succesRedirect: 'https://www.walla.com',
@@ -138,7 +142,7 @@ app.use(express.static(path.join(__dirname, 'dist')));
 /////
 // Catch all other routes and return the index file
 app.get('*', (req, res) => {
-  res.sendFile(path.join(__dirname,'src/error.html'));
+  res.sendFile(path.join(__dirname, 'src/error.html'));
 });
 
 /**
