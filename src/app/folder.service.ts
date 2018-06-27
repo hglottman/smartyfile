@@ -42,6 +42,8 @@ export class FolderService {
   }
 
   addFile(newFile: File): void {
+    console.log('in service, sending file');
+    console.log(newFile);
     this.http.post<File>('/file_api/', { file: newFile }).subscribe(() => {
     });
   }
@@ -81,10 +83,10 @@ export class FolderService {
       });
     }
 
-
+  uploadFile(theFile) {
+   return this.http.post<File>('/file_api/upload', { file: theFile });
   }
 
-
-
+}
 
 

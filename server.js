@@ -4,12 +4,15 @@ const path = require('path');
 const http = require('http');
 const bodyParser = require('body-parser');
 
+
 // Get our API routes
 const loginApi = require('./server/routes/login_api');
 const fileApi = require('./server/routes/file_api');
 const foldersApi = require('./server/routes/folder_api');
 
 const app = express();
+
+
 
 // Parsers for POST data
 app.use(bodyParser.json());
@@ -18,6 +21,8 @@ app.use(bodyParser.urlencoded({ extended: false }));
 // Point static path to dist
 app.use(express.static(path.join(__dirname, 'dist/docSetup')));
 app.use(express.static(path.join(__dirname, 'node_modules')));
+// Public Folder
+app.use(express.static('./public'));
 
 
 // Set our api routes

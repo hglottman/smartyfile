@@ -21,7 +21,11 @@ export class UploadFilesComponent implements OnInit {
 
   handleFileInput(files) {
     this.file.the_file = files.item(0);
-    this.fileUploaded.emit(this.file.the_file);
+    const theFile = this.file.the_file;
+    this.folderService.uploadFile(theFile).subscribe((data) => {
+      this.file.the_file = data;
+      this.fileUploaded.emit(this.file.the_file);
+    });
     // this.uploadFileToActivity();
 }
 

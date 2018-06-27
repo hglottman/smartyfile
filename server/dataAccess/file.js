@@ -80,6 +80,12 @@ class File_Model {
         }
     }
 
+    // uploadFile(theFile) {
+
+    // }
+
+    
+
 }
 
 var file = new File_Model();
