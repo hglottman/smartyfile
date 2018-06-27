@@ -23,9 +23,9 @@ class File_Model {
 
     getAllFiles(folder_id) {
         return this.file.findAll({
-                where: {
-                    folder_id: folder_id
-                }
+            where: {
+                folder_id: folder_id
+            }
         }).then((data) => {
             return data
         }, err => {
@@ -56,32 +56,28 @@ class File_Model {
 
     updateFile(fileToUpdate) {
         return this.file.update(
-            fileToUpdate, 
-            {where: {file_id: fileToUpdate.file_id }
-        }).then (() => {
-            return this.file.findAll({
-                where: {
-                    folder_id: fileToUpdate.folder_id
-                }
-        }).then((data) => {
-            return data
-        }, err => {
-            console.error(err)
-        })
-        })
+            fileToUpdate,
+            {
+                where: { file_id: fileToUpdate.file_id }
+            }).then(() => {
+                return this.file.findAll({
+                    where: {
+                        folder_id: fileToUpdate.folder_id
+                    }
+                }).then((data) => {
+                    return data
+                }, err => {
+                    console.error(err)
+                })
+            })
     }
 
-    deleteFile(file_id, folder_id) {
-      return this.file.destroy({
+    deleteFile(file_id) {
+        return this.file.destroy({
             where: {
                 file_id: file_id
             }
-        }).then((req, res) => {
-            return this.getAllFiles(folder_id);            
         })
-        err => {
-            console.error(err)
-        }
     }
 
 }

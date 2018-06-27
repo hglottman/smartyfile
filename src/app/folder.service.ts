@@ -46,10 +46,12 @@ export class FolderService {
     });
   }
 
-  deleteFile(file_id) {
-    this.http.delete<File>('/file_api/' + file_id).subscribe(() => {
-      // this.getAllFiles();
-    });
+  deleteFile(file) {
+    console.log(file.file_id);
+    this.http.delete<File[]>('/file_api/' + file.file_id).subscribe(() => {
+      this.getAllFiles(file.folder_id);
+    })
+  
   }
 
   editFile(updatedFile) {
@@ -76,7 +78,6 @@ export class FolderService {
 
   addNewFolder(newFolder, id) {
       this.http.post<Folder[]>('/folder_api/add_folder/' + id, { folder: newFolder}).subscribe((allfolders) => {
-        console.log(allfolders)
         this.allFoldersSubject.next(allfolders);
       })
     }

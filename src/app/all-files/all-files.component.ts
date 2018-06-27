@@ -15,17 +15,22 @@ export class AllFilesComponent implements OnInit {
 
   files = new Array<File>();
 
-  constructor(private folderService: FolderService,  private route : ActivatedRoute, private dialog : MatDialog) {}
+  constructor(private folderService: FolderService, private route: ActivatedRoute, private dialog: MatDialog) { }
 
-    ngOnInit() {
-      this.route.params.subscribe(params => {
-          this.folderService.getAllFiles(params.id);
-        });
-          this.folderService.allFilesObservable.subscribe((files) => {
-        this.files = files;
-        console.log(this.files);
-     });
+  ngOnInit() {
+    this.route.params.subscribe(params => {
+      this.folderService.getAllFiles(params.id);
+    });
+    this.folderService.allFilesObservable.subscribe((files) => {
+      this.files = files;
+      console.log(this.files);
+    });
 
+  }
+
+  deleteFile(file) {
+    console.log(file)
+    this.folderService.deleteFile(file);
   }
 
 }

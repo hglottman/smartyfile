@@ -10,7 +10,6 @@ import { FolderService } from '../folder.service';
   styleUrls: ['./dialog.component.css']
 })
 export class DialogComponent implements OnInit {
-
   description: File;
   update: boolean;
 

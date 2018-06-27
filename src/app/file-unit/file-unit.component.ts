@@ -13,6 +13,8 @@ import { DialogComponent } from '../dialog/dialog.component';
 export class FileUnitComponent implements OnInit {
 
   @Input() file: File = new File();
+  @Output() parentDelete: EventEmitter<File> = new EventEmitter();
+
 
 
   constructor(private dialog : MatDialog) { }
@@ -27,10 +29,12 @@ export class FileUnitComponent implements OnInit {
 
     dialogConfig.disableClose = true;
     dialogConfig.autoFocus = true;
-    console.log(this.file);
     dialogConfig.data = this.file;
-
     this.dialog.open(DialogComponent, dialogConfig);
+}
+
+deleteFile () {
+  this.parentDelete.emit(this.file)
 }
 
 

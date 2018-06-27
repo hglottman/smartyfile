@@ -7,13 +7,8 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
 
-  isActive = false;
   title = 'app';
 
-  toggleAddingNewFolder() {
-
-    this.isActive === false ? this.isActive = true : this.isActive = false;
-  }
 }
 
 
