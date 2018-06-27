@@ -73,7 +73,7 @@ class User_Model {
       user_name: userData.user_name,
       password: userData.password,
       email_adress: userData.email_adress,
-      is_active: userData.is_active
+      is_active: true
     }).save().then((data) => {
       return data
     }, err => {

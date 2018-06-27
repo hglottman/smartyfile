@@ -31,7 +31,7 @@ export class UserService {
   Login(username, password) {
     this.http.post('/login', { username: username, password: password },{responseType: 'text'}).subscribe((data) => {
       console.log(data)
-      if (data == 'false') {
+      if (data == "false") {
         this.router.navigate([''])        
         alert('user name or password not correct, Please try again')
       } else {
