@@ -85,13 +85,17 @@ export class FolderService {
     });
   }
 
-  downloadFile(file: String) {
-    const body = { filename: file };
-    return this.http.post('/file_api/download', body, {
+  downloadFile(filename: String) {
+    const body = { filename: filename };
+    console.log('in folder service');
+    console.log(body);
+    return this.http.post('/file_api/download/', body, {
       responseType: 'blob',
-      headers: new HttpHeaders().append('content-Type' : 'application/json')
+      headers: new HttpHeaders().append('content-Type', 'application/json')
     });
   }
+
+
 }
 
 

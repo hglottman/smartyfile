@@ -60,6 +60,7 @@ attachmentList: any = [];
   download(index) {
     console.log(index);
 const filename = this.attachmentList[index].uploadname;
+console.log(filename);
 this.folderService.downloadFile(filename).subscribe(
   data => saveAs(data, filename),
 error => console.error(error)

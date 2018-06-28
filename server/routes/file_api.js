@@ -4,6 +4,7 @@ const fileModel = require('../dataAccess/file');
 const multer = require('multer');
 var path = require ('path');
 
+
 var store = multer.diskStorage({
   destination: function(req,file,cb){
     cb(null, './uploads');
@@ -26,7 +27,11 @@ router.post('/upload', function (req, res, next) {
 });
 
 router.post('/download', function (req,res,next){
-  filepath = path.join(_dirname, '../upolads') + '/' + req.body.filename;
+  var __dirname = path.resolve(path.dirname(''));
+
+  console.log(' I AM at post download');
+  console.log(__dirname);
+  filepath = path.join(__dirname, './uploads') + '/' + req.body.filename;
 res.sendFile(filepath);
 });
 
