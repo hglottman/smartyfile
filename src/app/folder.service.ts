@@ -50,6 +50,10 @@ export class FolderService {
     });
   }
 
+  postNewFile (file : FormData) {
+   return this.http.post('/file_api/postfile', file)
+  }
+
   deleteFile(file) {
     this.http.delete<File[]>('/file_api/' + file.file_id).subscribe(() => {
       this.getAllFiles(file.folder_id);
