@@ -1,10 +1,11 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Subject, Observable, Subscriber } from 'rxjs';
 import { File } from './file';
 import { Folder } from './folder';
 import { UserService } from './user.service';
 import { User } from './user';
+
 
 @Injectable({
   providedIn: 'root'
@@ -81,6 +82,14 @@ export class FolderService {
   addNewFolder(newFolder, id) {
     this.http.post<Folder[]>('/folder_api/add_folder/' + id, { folder: newFolder }).subscribe((allfolders) => {
       this.allFoldersSubject.next(allfolders);
+    });
+  }
+
+  downloadFile(file: String) {
+    const body = { filename: file };
+    return this.http.post('/file_api/download', body, {
+      responseType: 'blob',
+      headers: new HttpHeaders().append('content-Type' : 'application/json')
     });
   }
 }

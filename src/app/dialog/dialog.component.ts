@@ -4,13 +4,15 @@ import { FormGroup, FormBuilder } from '@angular/forms';
 import { File } from '../file';
 import { FolderService } from '../folder.service';
 import { FileSelectDirective, FileUploader } from 'ng2-file-upload';
+import { saveAs} from 'file-saver';
 
 const uri = 'http://localhost:3000/file_api/upload';
 
 @Component({
   selector: 'app-dialog',
   templateUrl: './dialog.component.html',
-  styleUrls: ['./dialog.component.css']
+  styleUrls: ['./dialog.component.css'],
+  providers: [FolderService]
 })
 export class DialogComponent implements OnInit {
   description: File;
@@ -53,6 +55,15 @@ attachmentList: any = [];
 
   close() {
     this.dialogRef.close();
+  }
+
+  download(index) {
+    console.log(index);
+const filename = this.attachmentList[index].uploadname;
+this.folderService.downloadFile(filename).subscribe(
+  data => saveAs(data, filename),
+error => console.error(error)
+);
   }
 
 }

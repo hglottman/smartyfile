@@ -2,6 +2,7 @@ const express = require('express');
 const router = express.Router();
 const fileModel = require('../dataAccess/file');
 const multer = require('multer');
+var path = require ('path');
 
 var store = multer.diskStorage({
   destination: function(req,file,cb){
@@ -19,8 +20,14 @@ router.post('/upload', function (req, res, next) {
     if(err){
       return res,status(501).json({error:err});
     } 
-    res.json({originalname:req.file.originalname, uploadname:req.file.filename});
+    //do all database record saving activity
+    return res.json({originalname:req.file.originalname, uploadname:req.file.filename});
   });
+});
+
+router.post('/download', function (req,res,next){
+  filepath = path.join(_dirname, '../upolads') + '/' + req.body.filename;
+res.sendFile(filepath);
 });
 
 router.get('/:folder_id', (req, res) => {
