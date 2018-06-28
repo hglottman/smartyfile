@@ -41,9 +41,8 @@ export class UserService {
     })
   }
   LogOut(){
-    return this.http.get('/logout',{responseType: 'text'}).subscribe((data)=>{
-      console.log(data)
-      this.log = data
+    return this.http.get('/logout',{responseType: 'text'}).subscribe(()=>{
+      location.reload();
       this.router.navigate([''])
     })
   }

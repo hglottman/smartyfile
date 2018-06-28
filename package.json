@@ -32,6 +32,7 @@
     "express-session": "^1.15.6",
     "material-design-icons": "^3.0.1",
     "mysql2": "^1.5.3",
+    "ngx-webcam": "^0.1.6",
     "nodemon": "^1.17.5",
     "passport": "^0.4.0",
     "passport-local": "^1.0.0",
