@@ -20,9 +20,8 @@
             <mat-datepicker #end></mat-datepicker>
           </mat-form-field>
     <br>
-    <mat-form-field>
-        <input matInput placeholder="upload file (not working)">
-    </mat-form-field>
+    
+        <input  type="file" (change)="onFileSelected($event)"  placeholder="upload file (not working)">
  
 </mat-dialog-content>
 
