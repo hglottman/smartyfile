@@ -33,6 +33,7 @@ import { AddfolderComponent } from './addfolder/addfolder.component';
 import { DialogComponent } from './dialog/dialog.component';
 import { FolderdialogComponent } from './folderdialog/folderdialog.component';
 import { HeaderComponent } from './header/header.component';
+import {WebcamModule} from 'ngx-webcam';
 
 
 
@@ -68,7 +69,8 @@ import { HeaderComponent } from './header/header.component';
     MatIconModule,
     MatSidenavModule,
     MatDatepickerModule,
-    MatNativeDateModule
+    MatNativeDateModule,
+    WebcamModule
     
   ],
 
