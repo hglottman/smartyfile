@@ -12,6 +12,7 @@ import { FolderService } from '../folder.service';
 export class DialogComponent implements OnInit {
   description: File;
   update: boolean;
+  newFile =  new FormData();
 
 
   constructor(  
@@ -30,20 +31,28 @@ export class DialogComponent implements OnInit {
   }
 
   save() {
-    console.log(this.description)
-    if(this.update === true) {
-      console.log("got here to the if statment")
-      this.dialogRef.close(
-        this.folderService.editFile(this.description)
-      )} else {
+
+    this.folderService.postNewFile(this.newFile).subscribe((filename) => {
+      if(this.update === true) {
+        console.log("got here to the if statment")
         this.dialogRef.close(
-          this.folderService.addFile(this.description)
-        )
-      }
+          this.folderService.editFile(this.description)
+        )} else {
+          this.description.the_file = filename;
+          this.dialogRef.close(
+            this.folderService.addFile(this.description)
+          )
+        }
+    })
+
   }
 
   close() {
     this.dialogRef.close();
+  }
+
+  onFileSelected(event) {
+    this.newFile.append('file', event.target.files[0], event.target.files[0].name)
   }
  
 }
