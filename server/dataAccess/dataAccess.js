@@ -4,7 +4,7 @@ var Sequelize=require('sequelize');
  class DataAccess {
     constructor(){
 
-        this.connection = new Sequelize('smartyfile', 'root', 'Nn204376024', {
+        this.connection = new Sequelize('smartyfile', 'root', '13245342', {
 
             host: 'localhost',
             dialect: 'mysql',

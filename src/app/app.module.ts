@@ -37,6 +37,7 @@ import {WebcamModule} from 'ngx-webcam';
 
 
 
+
 @NgModule({
   declarations: [
     AppComponent,

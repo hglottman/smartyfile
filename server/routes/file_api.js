@@ -44,7 +44,7 @@ router.post('/', (req, res) => {
 
 router.post('/postfile',upload.single('file'), (req, res) => {
   console.log(req.file);
-  res.send(JSON.stringify(req.file.path))
+  res.send(JSON.stringify(req.file.filename))
 })
 
 router.put('/', (req, res) => {

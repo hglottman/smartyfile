@@ -15,13 +15,17 @@
           </mat-form-field>
     <br>
     <mat-form-field>
-            <input matInput [matDatepicker]="end" placeholder="Start Date" [(ngModel)]="description.start_date">
+            <input matInput [matDatepicker]="end" placeholder="End Date" [(ngModel)]="description.end_date">
             <mat-datepicker-toggle matSuffix [for]="end"></mat-datepicker-toggle>
             <mat-datepicker #end></mat-datepicker>
           </mat-form-field>
     <br>
+    <mat-form-field>
+        <input matInput placeholder="Write Notes" [(ngModel)] = "description.notes">
+    </mat-form-field>
+    <br>
     
-        <input  type="file" (change)="onFileSelected($event)"  placeholder="upload file (not working)">
+        <input  type="file" (change)="onFileSelected($event)">
  
 </mat-dialog-content>
 
