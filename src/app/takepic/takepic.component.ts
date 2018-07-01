@@ -68,6 +68,7 @@ export class TakepicComponent implements OnInit {
   }
 
   public handleImage(webcamImage: WebcamImage): void {
+    console.log(webcamImage);
     console.info('received webcam image', webcamImage);
     this.webcamImage = webcamImage;
 

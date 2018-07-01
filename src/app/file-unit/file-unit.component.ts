@@ -53,6 +53,9 @@ export class FileUnitComponent implements OnInit {
 
       return  cellColorF(difference);
 
+  ngOnInit() {
+    
+    
   }
 
   openDialog() {

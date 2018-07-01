@@ -5,6 +5,7 @@ export class Folder {
     public date: Date;
     public is_active: boolean;
     public user_id: number;
+    public file_img:string;
 
   
 

@@ -30,8 +30,7 @@ export class SignupComponent implements OnInit {
     this.dialogRef.close()
   }
   openDialog() {
-    let dialogRef = this.dialog.open(TakepicComponent
-    );
+    let dialogRef = this.dialog.open(TakepicComponent);
   }
 
 }
