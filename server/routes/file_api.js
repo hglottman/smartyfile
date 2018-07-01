@@ -5,9 +5,23 @@ const crypto = require('crypto');
 const fileModel = require('../dataAccess/file');
 var path = require('path');
 var multer = require('multer');
+var cloudinary = require('cloudinary');
+
+
+cloudinary.config({ 
+  cloud_name: 'smartyfile', 
+  api_key: '573259347122198', 
+  api_secret: 'VSZtPo5TgcFhNXsYSfb2afY4uEw' 
+});
+
+
+
+
+
+
 var storage = multer.diskStorage({
   destination: function (req, file, cb) {
-    cb(null, './uploads')
+    cb(null, './dist/docsetup/assets')
   },
   filename: function (req, file, cb) {
     crypto.pseudoRandomBytes(16, function (err, raw) {
@@ -48,7 +62,12 @@ router.post('/', (req, res) => {
 
 router.post('/postfile', upload.single('file'), (req, res) => {
   console.log(req.file);
-  res.send(JSON.stringify(req.file.filename))
+  cloudinary.v2.uploader.upload(req.file.path, 
+    function(error, result){
+      console.log(result)
+  res.send(JSON.stringify(result.url))
+      
+    });
 })
 
 router.put('/', (req, res) => {
