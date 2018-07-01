@@ -76,12 +76,12 @@ import { EdituserComponent } from './edituser/edituser.component';
     MatDatepickerModule,
     MatNativeDateModule,
     WebcamModule
-    
+
   ],
 
   providers: [FolderService],
   bootstrap: [AppComponent],
-  entryComponents:[SignupComponent,LoginComponent,DialogComponent,TakepicComponent,EdituserComponent]
+  entryComponents: [SignupComponent, LoginComponent, DialogComponent, TakepicComponent, EdituserComponent]
 
 })
 export class AppModule { }
