@@ -36,6 +36,9 @@ import { HeaderComponent } from './header/header.component';
 import {WebcamModule} from 'ngx-webcam';
 import { TakepicComponent } from './takepic/takepic.component';
 import { EdituserComponent } from './edituser/edituser.component';
+import { FilepicComponent } from './filepic/filepic.component';
+import {MatRadioModule} from '@angular/material/radio';
+
 
 
 
@@ -53,7 +56,8 @@ import { EdituserComponent } from './edituser/edituser.component';
     FolderdialogComponent,
     HeaderComponent,
     TakepicComponent,
-    EdituserComponent
+    EdituserComponent,
+    FilepicComponent
   ],
   imports: [
     MatCardModule,
@@ -75,13 +79,14 @@ import { EdituserComponent } from './edituser/edituser.component';
     MatSidenavModule,
     MatDatepickerModule,
     MatNativeDateModule,
-    WebcamModule
+    WebcamModule,
+    MatRadioModule
     
   ],
 
   providers: [FolderService],
   bootstrap: [AppComponent],
-  entryComponents:[SignupComponent,LoginComponent,DialogComponent,TakepicComponent,EdituserComponent]
+  entryComponents:[SignupComponent,LoginComponent,DialogComponent,TakepicComponent,EdituserComponent,FilepicComponent]
 
 })
 export class AppModule { }
