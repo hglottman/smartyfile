@@ -15,6 +15,7 @@ export class UserService {
   user: User
   currentUser;
   log;
+  userpic /// change
   public userUpdate: Observable<User[]>
   public userSubject: Subject<User[]>
   constructor(private http: HttpClient, private router: Router) {
@@ -31,7 +32,7 @@ export class UserService {
   Login(username, password) {
     this.http.post('/login', { username: username, password: password }).subscribe((data) => {
       if (data === false) {
-        this.router.navigate([''])        
+        this.router.navigate([''])
         alert('user name or password not correct, Please try again')
       } else {
         this.currentUser = data
@@ -40,17 +41,29 @@ export class UserService {
       }
     })
   }
-  LogOut(){
-    return this.http.get('/logout',{responseType: 'text'}).subscribe(()=>{
-      location.reload();
+  LogOut() {
+    this.http.get('/logout', { responseType: 'text' }).subscribe((data) => {
+      // console.log(data)
+      this.log = data
       this.router.navigate([''])
     })
   }
   createNewUser(user: User) {
+    user.user_img = this.userpic
     this.http.post<User>('/login_api/addUser', { user: user }).subscribe((data) => {
       console.log(data)
       this.users.push(data);
       this.userSubject.next(this.users)
     })
+  }
+  editUser(user:User){
+    console.log(user)
+    this.http.put('/login_api/userUpdate/:id',user).subscribe(()=>{
+
+    })
+  }
+
+  saveuserimage(pic) {
+    this.userpic = pic;
   }
 }

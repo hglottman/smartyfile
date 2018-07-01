@@ -7,4 +7,5 @@ export class User{
     public password:string;
     public email_adress:string;
     public is_active:boolean;
+    public user_img:string;
 }

@@ -17,6 +17,13 @@ router.get('/', (req, res) => {
     res.send(JSON.stringify(data))
   });
 });
+router.put('/userUpdate/:id',(req,res)=>{
+  var userToUpdate = req.body
+  var myId = req.params.id
+  userInc.updateUser(myId,userToUpdate).then(()=>{
+    res.send(JSON.stringify('User hes been updated'))
+  })
+})
 
 // router.get('/:userName/:password', (req, res) => {
 //   var userName = req.params.userName;

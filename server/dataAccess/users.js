@@ -30,6 +30,9 @@ class User_Model {
       },
       is_active: {
         type: Sequelize.BOOLEAN
+      },
+      user_img:{
+        type:Sequelize.STRING
       }
 
     }, {
@@ -72,11 +75,19 @@ class User_Model {
       user_name: userData.user_name,
       password: userData.password,
       email_adress: userData.email_adress,
-      is_active: true
+      is_active: true,
+      user_img:userData.user_img
     }).save().then((data) => {
       return data
     }, err => {
       console.error(err)
+    })
+  }
+  updateUser(id,userData){
+    return this.user.update(userData,{
+      where:{
+        id:id
+      }
     })
   }
 

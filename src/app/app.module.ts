@@ -34,6 +34,8 @@ import { DialogComponent } from './dialog/dialog.component';
 import { FolderdialogComponent } from './folderdialog/folderdialog.component';
 import { HeaderComponent } from './header/header.component';
 import {WebcamModule} from 'ngx-webcam';
+import { TakepicComponent } from './takepic/takepic.component';
+import { EdituserComponent } from './edituser/edituser.component';
 
 
 
@@ -49,7 +51,9 @@ import {WebcamModule} from 'ngx-webcam';
     AddfolderComponent,
     DialogComponent,
     FolderdialogComponent,
-    HeaderComponent
+    HeaderComponent,
+    TakepicComponent,
+    EdituserComponent
   ],
   imports: [
     MatCardModule,
@@ -77,7 +81,7 @@ import {WebcamModule} from 'ngx-webcam';
 
   providers: [FolderService],
   bootstrap: [AppComponent],
-  entryComponents:[SignupComponent,LoginComponent,DialogComponent]
+  entryComponents:[SignupComponent,LoginComponent,DialogComponent,TakepicComponent,EdituserComponent]
 
 })
 export class AppModule { }
