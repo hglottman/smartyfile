@@ -41,9 +41,7 @@ class User_Model {
       }
     });
 
-    // this.user.hasMany(folder, {foreignKey: folder_id })
   }
-
 
 
   getAllUsers() {
@@ -67,6 +65,7 @@ class User_Model {
       console.error(err)
     })
   }
+
   createUser(userData) {
     console.log(userData)
     return this.user.build({

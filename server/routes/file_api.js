@@ -33,7 +33,10 @@ router.get('/:folder_id/:file_id', (req, res) => {
 
 router.post('/', (req, res) => {
   let newFile = req.body.file;
-  
+  let fileDate = new Date(newFile.end_date)
+  fileDate.setDate(fileDate.getDate()+1);
+  console.log(fileDate);
+newFile.end_date = fileDate;  
    fileModel.createFile(newFile).then((data) => {
     res.send(JSON.stringify(data))
    })
@@ -44,7 +47,7 @@ router.post('/', (req, res) => {
 
 router.post('/postfile',upload.single('file'), (req, res) => {
   console.log(req.file);
-  res.send(JSON.stringify(req.file.path))
+  res.send(JSON.stringify(req.file.filename))
 })
 
 router.put('/', (req, res) => {

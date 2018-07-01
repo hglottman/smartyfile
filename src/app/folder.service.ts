@@ -45,9 +45,9 @@ export class FolderService {
     return this.http.get<any>('/file_api/' + file_id);
   }
 
-  addFile(newFile: File): void {
-    this.http.post<File>('/file_api/', { file: newFile }).subscribe(() => {
-    });
+  addFile(newFile: File) {
+   return this.http.post<File>('/file_api/', { file: newFile })
+  
   }
 
   postNewFile (file : FormData) {

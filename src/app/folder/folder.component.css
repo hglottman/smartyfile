@@ -1,7 +1,7 @@
 .app-grid {
     display: grid;
     grid-template: 65px 40px auto  / 1fr;
-    background-color: rgba(134, 168, 243, 0.979);
+    background-color: rgb(18, 17, 20);
     min-height: 600px;
       
 }
@@ -15,7 +15,7 @@
 }
 
 .addfolder-toggle {
-    background-color: rgb(66, 7, 121);
+    background-color: white;
     grid-column: 1 / 2;
     height: 90%;
     border-radius: 0 0 15px 15px;
@@ -26,6 +26,12 @@
     grid-column: 2 / 3;
 }
 
+.addnewfolder {
+    font-size: 20px;
+    color: black;
+}
+
+
 .header {
     grid-row: 1 / 2;
 }
@@ -33,67 +39,66 @@
 
 
 .folders-grid {
+    padding-top: 25px;    
+    padding-left: 40px;
     grid-row: 3 / 4;
     display:grid;
-    grid-template: 200px 200px /  repeat(4,1fr);
-    grid-gap: 10px;
+    grid-template: auto /  repeat(5,1fr);
 }
 
 .addfile-btn {
     grid-row: 3 / 4;
     grid-column: 1 / 2;
+    width: 100%;
+    margin: auto;
+    
+
+    
+}
+
+fa {
+    font-size: 27px;
 }
 
 .edit-btn {
     grid-row: 3 / 4;
     grid-column: 2 / 3;
+    width: 100%;
+    margin: auto;
+    
+    
 }
 
 .remove-btn {
     grid-row: 3 / 4;
     grid-column: 3 / 4;
+    width: 100%;
+    margin: auto;
 }
 
 .folderName {
     grid-row: 2 / 3;
     grid-column: 1 / -1;
-    font-size: 35px;
+    font-size: 20px;
     margin: auto;
-    padding: 2%;
-    color: rgb(6, 24, 128);
+    color: black;
     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
    
     
 }
 
-.fa {
-    color: rgb(41, 6, 124);
-}
 
 
 .folder {
-    box-sizing: border-box;
     display:grid;
-    grid-template: 10% 65% 25% / repeat(3, 1fr);
-    width: 90%;
-    height: 80%;
-    margin: auto;
-    position: relative;
-    background-color: white;
-    border-radius: 0 6px 6px 6px;
-    box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.59);
+    grid-template: 10% 65% 25% / repeat(3, 33.3333333%);
+    width: 200px;
+    height: 200px;
+    background-image: url('http://icons.iconarchive.com/icons/paomedia/small-n-flat/1024/folder-icon.png');
+    background-size: cover;
 }
 
-.folder:before {
-    content: '';
-    width: 40%;
-    height: 12px;
-    border-radius: 0 20px 0 0;
-    background-color: rgb(41, 6, 124);
-    position: absolute;
-    top: -12px;
-    left: 0px;
-}
+
 
 
  

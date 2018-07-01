@@ -1,19 +1,22 @@
 <mat-card class = "file-unit">
-  <mat-card-header class="fileUnit"></mat-card-header>
-    <mat-card-content>
-        <p class='link-file'>{{file.the_file}}</p>
-      <h2>{{file.file_name}}</h2>
-      <br>
+
+  <mat-card-header class="header">
+     <h1>{{file.file_name}}</h1> 
+     <br>
+     <br>
+  </mat-card-header>
+
+    <mat-card-content class ="content">
       <h3>Upload date: {{file.upload_date}}</h3>
-      <h4>Start date: {{file.start_date}}</h4>
-      <h4>End date: {{file.end_date}}</h4>
-      <br>
+      <h4><strong>Start date:</strong> {{file.start_date}}</h4>
+      <h4><strong>End date:</strong> {{file.end_date}}</h4>
       <p>Notes: {{file.notes}}</p>
-      <br>
     </mat-card-content>
-    <mat-card-actions>
+
+    <mat-card-actions calls="actions">
       <button mat-button (click) = "openDialog()"><i class="fas fa-pencil-alt fa-2x"></i></button>	
       <button mat-button (click)="deleteFile()"><i class="fas fa-trash-alt fa-2x"></i></button>	
     </mat-card-actions>	
+
 </mat-card>
 

@@ -33,6 +33,15 @@ class File_Model {
         })
     };
 
+    getFileByDate(date, folder_id) {
+        return this.file.findAll({
+            where: {
+                folder_id : folder_id,
+                end_date: date
+            }
+        })
+    }
+
     getFile(file_id) {
         return this.file.findOne({
             where: {
