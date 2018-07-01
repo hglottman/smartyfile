@@ -14,3 +14,19 @@
   .example-sidenav {
     padding: 20px;
   } */
+  .img{
+    width: 70px;
+    height:auto;
+    border-radius: 25%;
+    direction: rtl;
+    float: right;
+    padding:0 14px;
+    margin-top: 15px;
+  }
+  .example-spacer {
+    flex: 1 1 auto;
+  }
+  .welcome{
+    margin-right: 15px;
+    margin-top: 10px;
+  }

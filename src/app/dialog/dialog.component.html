@@ -9,20 +9,19 @@
     </mat-form-field>
     <br>
     <mat-form-field>
-        <input matInput
-                placeholder="Validity Start Date"
-               [(ngModel)]="description.start_date">
-    </mat-form-field>
+            <input matInput [matDatepicker]="picker" placeholder="Start Date" [(ngModel)]="description.start_date">
+            <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+            <mat-datepicker #picker></mat-datepicker>
+          </mat-form-field>
     <br>
     <mat-form-field>
-        <input matInput
-                placeholder="Validity End Date"
-                [(ngModel)]="description.end_date">
-    </mat-form-field>
+            <input matInput [matDatepicker]="end" placeholder="Start Date" [(ngModel)]="description.start_date">
+            <mat-datepicker-toggle matSuffix [for]="end"></mat-datepicker-toggle>
+            <mat-datepicker #end></mat-datepicker>
+          </mat-form-field>
     <br>
-    <mat-form-field>
-        <input matInput placeholder="upload file (not working)">
-    </mat-form-field>
+    
+        <input  type="file" (change)="onFileSelected($event)"  placeholder="upload file (not working)">
  
 </mat-dialog-content>
 

@@ -1,29 +1,20 @@
 import { Component, OnInit, Inject } from '@angular/core';
-import { UserService } from '../user.service'
+import { WebcamImage, WebcamInitError, WebcamUtil } from 'ngx-webcam';
 import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
-import { User } from '../user'
-import { SignupComponent } from '../signup/signup.component'
-import { MatFormFieldModule } from '@angular/material/form-field';
-import { RouterModule, Routes, Router } from '@angular/router';
+import { UserService } from '../user.service'
 import { Subject } from 'rxjs';
 import { Observable } from 'rxjs';
-import { WebcamImage, WebcamInitError, WebcamUtil } from 'ngx-webcam';
-
-
 
 
 @Component({
-  selector: 'app-login',
-  templateUrl: './login.component.html',
-  styleUrls: ['./login.component.css']
+  selector: 'app-takepic',
+  templateUrl: './takepic.component.html',
+  styleUrls: ['./takepic.component.css']
 })
-export class LoginComponent implements OnInit {
-  user: User
-  hide = true;
-  username;
-  password;
+export class TakepicComponent implements OnInit {
+  pic;
   // toggle webcam on/off
-  public showWebcam = false;
+  public showWebcam = true;
   public allowCameraSwitch = true;
   public multipleWebcamsAvailable = false;
   public deviceId: string;
@@ -40,7 +31,8 @@ export class LoginComponent implements OnInit {
   private trigger: Subject<void> = new Subject<void>();
   // switch to next / previous / specific webcam; true/false: forward/backwards, string: deviceId
   private nextWebcam: Subject<boolean | string> = new Subject<boolean | string>();
-  constructor(public userService: UserService, public dialog: MatDialog, private router: Router) { }
+  constructor(public dialogRef: MatDialogRef<TakepicComponent>,
+    @Inject(MAT_DIALOG_DATA) public data: any, public userService: UserService) { }
 
   ngOnInit() {
     WebcamUtil.getAvailableVideoInputs()
@@ -48,16 +40,12 @@ export class LoginComponent implements OnInit {
         this.multipleWebcamsAvailable = mediaDevices && mediaDevices.length > 1;
       });
   }
-  openDialog(user) {
-    console.log(user);
-    let dialogRef = this.dialog.open(SignupComponent, {
-
-      data: { user: user }
+  sendNewPic(webcamImage) {
+    this.webcamImage = webcamImage;
+    this.dialogRef.afterClosed().subscribe((data) => {
+      this.userService.saveuserimage(this.webcamImage);
     });
-  }
-  login() {
-    this.userService.Login(this.username, this.password)
-    // this.router.navigate(['folder'])
+    this.dialogRef.close()
   }
   public triggerSnapshot(): void {
     this.trigger.next();
@@ -82,7 +70,9 @@ export class LoginComponent implements OnInit {
   public handleImage(webcamImage: WebcamImage): void {
     console.info('received webcam image', webcamImage);
     this.webcamImage = webcamImage;
-    console.log(this.webcamImage)
+
+    // console.log(this.webcamImage + "webcamImage")
+    // console.log(this.webcamImage.imageAsDataUrl)
   }
 
   public cameraWasSwitched(deviceId: string): void {
@@ -97,7 +87,5 @@ export class LoginComponent implements OnInit {
   public get nextWebcamObservable(): Observable<boolean | string> {
     return this.nextWebcam.asObservable();
   }
-
-
 
 }

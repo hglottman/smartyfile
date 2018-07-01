@@ -3,6 +3,10 @@ import { FolderService } from '../folder.service';
 import { Folder } from '../folder';
 import { MatDialog, MatDialogConfig } from '@angular/material';
 import { DialogComponent } from '../dialog/dialog.component';
+import { UserService } from '../user.service';
+import { Subject } from 'rxjs';
+import { Observable } from 'rxjs';
+import { User } from '../user';
 
 @Component({
   selector: 'app-folder',
@@ -13,16 +17,25 @@ export class FolderComponent implements OnInit {
 
   public userFolders : Folder[];
   public newFolder : Folder;
-  public userId = 1;
-  constructor(private folderService : FolderService, private dialog : MatDialog) {
+  public currentUser;
+  public isActive = false;
 
+  constructor(private folderService : FolderService, private dialog : MatDialog, private userService : UserService) {
    }
 
   ngOnInit() {
-    this.folderService.getUserFolders(this.userId);
-    this.folderService.allFoldersObservable.subscribe((data) => {
-      this.userFolders = data;
-    })
+      this.currentUser = this.folderService.currentUser;
+      this.folderService.getUserFolders(this.currentUser.user_id);
+      this.folderService.allFoldersObservable.subscribe((data) => {
+        this.userFolders = data;
+  
+      })
+    
+  }
+
+  toggleAddingNewFolder() {
+
+    this.isActive === false ? this.isActive = true : this.isActive = false;
   }
 
   deleteFolder(folder) {
@@ -32,6 +45,8 @@ export class FolderComponent implements OnInit {
   getUserFiles(folder_id) {
     this.folderService.getAllFiles(folder_id);
   }
+
+  
 
   openDialog(folder) {
     let folder_id = folder.folder_id;

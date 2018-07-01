@@ -1,6 +1,6 @@
 export class File {
 
-    public the_file: String;
+    public the_file: any;
     public file_id: Number;
     public file_name: String;
     public folder_id: Number;

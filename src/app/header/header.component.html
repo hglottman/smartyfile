@@ -1,18 +1,32 @@
-
 <mat-toolbar color="primary">
   <mat-toolbar-row>
-  <mat-drawer-container class="example-container" autosize style="background-color: rgb(96, 65, 176)">
-  
-    <!-- <div class="example-sidenav-content"> -->
-      <button mat-button color="primary" type="button" mat-button (click)="drawer.toggle()" (click)="showFiller = !showFiller" mat-raised-button>
-        <i class="material-icons">
+    <mat-drawer-container class="example-container" autosize style="background-color: rgb(96, 65, 176)">
+
+      <!-- <div class="example-sidenav-content"> -->
+      <button mat-button color="primary" type="button" mat-button (click)="drawer.toggle()" (click)="showFiller = !showFiller"
+        mat-raised-button>
+        <!-- <i class="material-icons">
           dehaze
-          </i>
+        </i> -->
+        <i class="material-icons">
+          settings
+        </i>
       </button>
-    <button mat-button class="home" routerLink = "/folder"><i class="fa fa-home fa-3x" ></i></button>          
-    <!-- </div> -->
-  </mat-drawer-container>
-</mat-toolbar-row>  
+      <button mat-button class="home" routerLink="/folder">
+        <i class="fa fa-home fa-3x"></i>
+      </button>
+
+      <!-- </div> -->
+    </mat-drawer-container>
+    <span class="example-spacer"></span>
+    <mat-card-header class="welcome">
+      <mat-card-title>Welcome {{currentUser.first_name}}</mat-card-title>
+    </mat-card-header>
+    <img mat-card-image *ngIf="currentUser.user_img" src="{{currentUser.user_img}}" alt="" class="img">
+    <i class="material-icons" *ngIf="!currentUser.user_img">
+        android
+        </i>
+  </mat-toolbar-row>
 </mat-toolbar>
 <mat-drawer #drawer class="example-sidenav" mode="side">
   <!-- <p>Auto-resizing sidenav</p> -->
@@ -20,11 +34,10 @@
   <button type="button" mat-button (click)="drawer.toggle()">
     <i class="material-icons">
       keyboard_arrow_left
-      </i>
+    </i>
   </button>
   <br>
-  <button mat-button (click)="getLogOut()">LOG OUT</button>  
+  <button mat-button (click)="getLogOut()">LOG OUT</button>
+  <br>
+  <button mat-button (click)="openDialog(currentUser)">Edit user</button>
 </mat-drawer>
-
- 
-

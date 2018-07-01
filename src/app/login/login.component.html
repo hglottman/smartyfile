@@ -3,7 +3,9 @@
 
 <mat-toolbar color="primary">
   <mat-toolbar-row>
-  <button mat-button class="home" routerLink = "/"><i class="fa fa-home fa-3x" ></i></button>      
+    <button mat-button class="home" routerLink="/">
+      <i class="fa fa-home fa-3x"></i>
+    </button>
   </mat-toolbar-row>
 </mat-toolbar>
 
@@ -16,8 +18,41 @@
     <input matInput placeholder="Enter your password" [type]="hide ? 'password' : 'text'" [(ngModel)]="password">
     <mat-icon matSuffix (click)="hide = !hide">{{hide ? 'visibility' : 'visibility_off'}}</mat-icon>
   </mat-form-field>
-</mat-card>
-<mat-card class="form-buttons">
-  <button mat-button color="primary" type="button" (click)="login()">Login</button>
+  <button mat-button color="primary" type="button" (click)="login()">Login</button> 
   <button mat-button color="primary" type="button" (click)="openDialog(user)">Sign-up</button>
+  <!-- <button mat-button color="primary" type="button" (click)="login()">Login</button>  -->
 </mat-card>
+<!-- <mat-card class="form-buttons">
+ 
+  <button mat-button color="primary" class="actionBtn" (click)="triggerSnapshot();">Take A Snapshot</button>
+  <button mat-button color="primary" class="actionBtn" (click)="toggleWebcam();">Toggle Webcam</button>
+  <input id="cameraSwitchCheckbox" type="checkbox" [(ngModel)]="allowCameraSwitch">
+  <label for="cameraSwitchCheckbox">Allow Camera Switch</label>
+
+</mat-card>
+<div style="text-align:center">
+  <div>
+    <mat-card>
+      <webcam [height]="500" [width]="500" [trigger]="triggerObservable" (imageCapture)="handleImage($event)" *ngIf="showWebcam"
+        [allowCameraSwitch]="allowCameraSwitch" [switchCamera]="nextWebcamObservable" [videoOptions]="videoOptions" (cameraSwitched)="cameraWasSwitched($event)"
+        (initError)="handleInitError($event)"></webcam>
+      <div class="snapshot" *ngIf="webcamImage">
+        <h2>Nice one!</h2>
+        <img [src]="webcamImage.imageAsDataUrl" />
+      </div>
+    </mat-card>
+    <br/>
+    <br/>
+    <button mat-button color="primary" class="actionBtn" (click)="showNextWebcam(true);" [disabled]="!multipleWebcamsAvailable">Next Webcam</button>
+    <br/> DeviceId:
+    <input id="deviceId" type="text" [(ngModel)]="deviceId" style="width: 500px">
+    <button mat-button color="primary" (click)="showNextWebcam(deviceId);">Activate</button>
+  </div>
+</div>
+
+
+
+<h4 *ngIf="errors.length > 0">Messages:</h4>
+<ul *ngFor="let error of errors">
+  <li>{{error | json}}</li>
+</ul> -->

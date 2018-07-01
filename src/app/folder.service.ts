@@ -3,29 +3,33 @@ import { HttpClient } from '@angular/common/http';
 import { Subject, Observable, Subscriber } from 'rxjs';
 import { File } from './file';
 import { Folder } from './folder';
+import { UserService } from './user.service';
+import { User } from './user';
 
 @Injectable({
   providedIn: 'root'
 })
 export class FolderService {
 
+  public allFiles: Array<File>;
+  public allFolders: Array<Folder>;
+  public currentUser: User;
 
-  allFolders: Array<Folder>;
-  allFoldersSubject: Subject<Folder[]> = new Subject<Folder[]>();
-  allFoldersObservable: Observable<Folder[]>;
+  public userSubject: Subject<User> = new Subject<User>();
+  public userOservable: Observable<User>
+  public allFilesSubject: Subject<File[]> = new Subject<File[]>();
+  public allFilesObservable: Observable<File[]>;
+  public allFoldersSubject: Subject<Folder[]> = new Subject<Folder[]>();
+  public allFoldersObservable: Observable<Folder[]>;
 
-
-  allFiles: Array<File>;
-  allFilesSubject: Subject<File[]> = new Subject<File[]>();
-  allFilesObservable: Observable<File[]>;
-
-  constructor(private http: HttpClient) {
-
+  constructor(private http: HttpClient, private userService: UserService) {
+    this.currentUser = this.userService.currentUser;
     this.allFoldersObservable = this.allFoldersSubject.asObservable();
     this.allFilesObservable = this.allFilesSubject.asObservable();
+    this.userOservable = this.userSubject.asObservable()
+
 
   }
-
 
   getAllFiles(folder_id): any {
     const observable = this.http.get<File[]>('/file_api/' + folder_id);
@@ -46,10 +50,15 @@ export class FolderService {
     });
   }
 
-  deleteFile(file_id) {
-    this.http.delete<File>('/file_api/' + file_id).subscribe(() => {
-      // this.getAllFiles();
-    });
+  postNewFile (file : FormData) {
+   return this.http.post('/file_api/postfile', file)
+  }
+
+  deleteFile(file) {
+    this.http.delete<File[]>('/file_api/' + file.file_id).subscribe(() => {
+      this.getAllFiles(file.folder_id);
+    })
+
   }
 
   editFile(updatedFile) {
@@ -61,26 +70,24 @@ export class FolderService {
 
   getUserFolders(id) {
     this.http.get<Array<Folder>>('/folder_api/' + id).subscribe((data) => {
-      console.log(data);
       this.allFolders = data;
       this.allFoldersSubject.next(this.allFolders);
     })
   }
 
   deleteFolder(folder_id) {
-    this.http.delete<Folder[]>('/folder_api/delete/'+ folder_id).subscribe(data => {
+    this.http.delete<Folder[]>('/folder_api/delete/' + folder_id).subscribe(data => {
       this.allFolders = data;
       this.allFoldersSubject.next(this.allFolders);
     })
   }
 
   addNewFolder(newFolder, id) {
-      this.http.post<Folder[]>('/folder_api/add_folder/' + id, { folder: newFolder}).subscribe((allfolders) => {
-        console.log(allfolders)
-        this.allFoldersSubject.next(allfolders);
-      })
-    }
+    this.http.post<Folder[]>('/folder_api/add_folder/' + id, { folder: newFolder }).subscribe((allfolders) => {
+      this.allFoldersSubject.next(allfolders);
+    })
   }
+}
 
 
 
