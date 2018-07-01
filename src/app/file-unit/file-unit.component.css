@@ -1,11 +1,11 @@
 
 .file-unit {
     display: grid;
-    grid-template: 50px minmax(200px, auto) 50px / 1fr;
+    grid-template: 50px minmax(160px, auto) 50px / 1fr;
     box-sizing: border-box;
     padding: 2%;
     border-radius: 15px;
-    border: 1px solid black;  
+    border: 2px solid rgb(56, 12, 12);  
     grid-row-gap: 20px;
 }
 

@@ -14,10 +14,7 @@ var nodemailer = require('nodemailer');
 function usersDataFetch() {
 
   let users;
-  let dateToFetch = new Date();
-  dateToFetch.setDate(dateToFetch.getDate() - 5)
-  console.log(dateToFetch);
-  let fileDate = new Date();
+  let currentDate = new Date();
 
   usersModel.getAllUsers().then(allUsers => {
     users = Object.keys(allUsers).map(i => allUsers[i]);
@@ -27,17 +24,21 @@ function usersDataFetch() {
           fileModel.getAllFiles(userFolders[j].folder_id).then(relevantFiles => {
             if (relevantFiles !== undefined) {
               for (k = 0; k < relevantFiles.length; k++) {
-                let d = new Date(relevantFiles[k].end_date)
-                d.setDate(d.getDate() - 5);             
-                if (d.getDate() === dateToFetch.getDate()) {
+                let fileDate = new Date(relevantFiles[k].end_date)
+                console.log(fileDate)
+                
+                fileDate.setDate(fileDate.getDate() + 5);
+                console.log(fileDate)
+                if (fileDate.getFullYear() === currentDate.getFullYear() &&
+                  fileDate.getMonth() === currentDate.getMonth() &&
+                  fileDate.getDate() === currentDate.getDate()) {
                   let emailInfo = {
                     usersEmail: users[i].email_adress,
                     fileNote: relevantFiles[k].notes,
                     fileName: relevantFiles[k].file_name,
                     fileEndDate: relevantFiles[k].end_date,
                   }
-                  // automaticMailSender(emailInfo)
-                  // need to fix timezones, and date format. might swich to moments.js
+                  automaticMailSender(emailInfo)
                 }
 
               }
@@ -48,11 +49,7 @@ function usersDataFetch() {
     }
   })
 }
-
-// usersDataFetch();
-
 // ---------------------------------------------------------------------------------------------------------
-
 const port = process.env.PORT || '8080';
 app.set('port', port);
 
@@ -61,7 +58,6 @@ const server = http.createServer(app);
 server.listen(port, () => console.log(`API running on localhost:${port}`));
 
 module.exports = router;
-
 
 function automaticMailSender(emailInfo) {
   var transporter = nodemailer.createTransport({
@@ -87,4 +83,6 @@ function automaticMailSender(emailInfo) {
     }
   });
 }
+
+// usersDataFetch();
 

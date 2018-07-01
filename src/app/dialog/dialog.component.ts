@@ -12,17 +12,16 @@ import { FolderService } from '../folder.service';
 export class DialogComponent implements OnInit {
   description: File;
   update: boolean;
-  newFile =  new FormData();
+  newFile = new FormData();
 
 
-  constructor(  
+  constructor(
     private dialogRef: MatDialogRef<DialogComponent>,
-    private folderService : FolderService,
-    @Inject(MAT_DIALOG_DATA) data)
-     {
-      data.upload_date === undefined ? this.update = false : this.update = true;
-       this.description = new File();
-      this.description = data;
+    private folderService: FolderService,
+    @Inject(MAT_DIALOG_DATA) data) {
+    data.upload_date === undefined ? this.update = false : this.update = true;
+    this.description = new File();
+    this.description = data;
   }
 
 
@@ -31,20 +30,24 @@ export class DialogComponent implements OnInit {
   }
 
   save() {
+    console.log(this.description.file_name)
+    
+    if (this.description.upload_date !== undefined ) {
+      this.dialogRef.close(
+        this.folderService.editFile(this.description)
 
-    this.folderService.postNewFile(this.newFile).subscribe((filename) => {
-      if(this.update === true) {
-        console.log("got here to the if statment")
+      )
+    } else {
+      this.folderService.postNewFile(this.newFile).subscribe((filename) => {
+        this.description.the_file = filename;
         this.dialogRef.close(
-          this.folderService.editFile(this.description)
-        )} else {
-          this.description.the_file = filename;
-          this.dialogRef.close(
-            this.folderService.addFile(this.description)
-          )
-        }
-    })
-
+          this.folderService.addFile(this.description).subscribe(() => {
+            this.description = new File();
+          })
+        )
+      }
+      )
+    }
   }
 
   close() {
@@ -54,5 +57,5 @@ export class DialogComponent implements OnInit {
   onFileSelected(event) {
     this.newFile.append('file', event.target.files[0], event.target.files[0].name)
   }
- 
+
 }
