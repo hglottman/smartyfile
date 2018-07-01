@@ -15,18 +15,22 @@ export class FolderService {
   public allFolders: Array<Folder>;
   public currentUser: User;
 
+
   public userSubject: Subject<User> = new Subject<User>();
   public userOservable: Observable<User>
   public allFilesSubject: Subject<File[]> = new Subject<File[]>();
   public allFilesObservable: Observable<File[]>;
   public allFoldersSubject: Subject<Folder[]> = new Subject<Folder[]>();
   public allFoldersObservable: Observable<Folder[]>;
+  public filePicSubject: Subject<string> = new Subject<string>();
+  public filePicObservable:Observable<string>;
 
   constructor(private http: HttpClient, private userService: UserService) {
     this.currentUser = this.userService.currentUser;
     this.allFoldersObservable = this.allFoldersSubject.asObservable();
     this.allFilesObservable = this.allFilesSubject.asObservable();
     this.userOservable = this.userSubject.asObservable()
+    this.filePicObservable = this.filePicSubject.asObservable()
 
 
   }
@@ -87,6 +91,11 @@ export class FolderService {
       this.allFoldersSubject.next(allfolders);
     })
   }
+  saveFileImage(picLink){
+    this.filePicSubject.next(picLink)
+  }
+
+
 }
 
 
