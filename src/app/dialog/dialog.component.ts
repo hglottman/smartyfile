@@ -1,8 +1,10 @@
 import { Component, OnInit, Inject } from '@angular/core';
-import { MAT_DIALOG_DATA, MatDialogRef } from "@angular/material";
+import { MAT_DIALOG_DATA, MatDialogRef, MatDialog } from "@angular/material";
 import { FormGroup, FormBuilder } from '@angular/forms';
 import { File } from '../file';
 import { FolderService } from '../folder.service';
+import { FilepicComponent } from '../filepic/filepic.component'
+
 
 @Component({
   selector: 'app-dialog',
@@ -13,12 +15,14 @@ export class DialogComponent implements OnInit {
   description: File;
   update: boolean;
   newFile = new FormData();
+  toggelRadio: string = "1"
+  filePic;
 
 
   constructor(
     private dialogRef: MatDialogRef<DialogComponent>,
     private folderService: FolderService,
-    @Inject(MAT_DIALOG_DATA) data) {
+    @Inject(MAT_DIALOG_DATA) data, public dialog: MatDialog) {
     data.upload_date === undefined ? this.update = false : this.update = true;
     this.description = new File();
     this.description = data;
@@ -26,27 +30,45 @@ export class DialogComponent implements OnInit {
 
 
   ngOnInit() {
+    this.folderService.filePicObservable.subscribe((data) => {
+      this.filePic = data
+      console.log('nadav')
+      console.log(this.filePic)
+    })
 
+  }
+  openDialog() {
+    let dialogRef = this.dialog.open(FilepicComponent);
   }
 
   save() {
     console.log(this.description.file_name)
-    
-    if (this.description.upload_date !== undefined ) {
+
+    if (this.description.upload_date !== undefined) {
       this.dialogRef.close(
         this.folderService.editFile(this.description)
 
       )
     } else {
-      this.folderService.postNewFile(this.newFile).subscribe((filename) => {
-        this.description.the_file = filename;
+      if (this.filePic !== undefined) {
+        this.description.the_file = this.filePic;
         this.dialogRef.close(
           this.folderService.addFile(this.description).subscribe(() => {
             this.description = new File();
           })
         )
+
+      } else {
+        this.folderService.postNewFile(this.newFile).subscribe((filename) => {
+          this.description.the_file = filename;
+          this.dialogRef.close(
+            this.folderService.addFile(this.description).subscribe(() => {
+              this.description = new File();
+            })
+          )
+        }
+        )
       }
-      )
     }
   }
 

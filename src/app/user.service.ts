@@ -44,7 +44,8 @@ export class UserService {
   LogOut() {
     this.http.get('/logout', { responseType: 'text' }).subscribe((data) => {
       // console.log(data)
-      this.log = data
+      // this.log = data
+      location.reload();
       this.router.navigate([''])
     })
   }
