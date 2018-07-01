@@ -26,3 +26,8 @@
 .actions {
     grid-row: 3 / 4;
 }
+
+.picture {
+    width: 100px;
+    height: 100px;
+}
