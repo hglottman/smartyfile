@@ -14,7 +14,7 @@ export class FolderService {
   public allFiles: Array<File>;
   public allFolders: Array<Folder>;
   public currentUser: User;
-
+  public currentFile:File;
 
   public userSubject: Subject<User> = new Subject<User>();
   public userOservable: Observable<User>
@@ -46,7 +46,7 @@ export class FolderService {
   }
 
   getFile(file_id) {
-    return this.http.get<any>('/file_api/' + file_id);
+    return this.http.get<any>('/file_api/' + file_id)
   }
 
   addFile(newFile: File) {

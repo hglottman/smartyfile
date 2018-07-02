@@ -38,6 +38,8 @@ import { TakepicComponent } from './takepic/takepic.component';
 import { EdituserComponent } from './edituser/edituser.component';
 import { FilepicComponent } from './filepic/filepic.component';
 import {MatRadioModule} from '@angular/material/radio';
+import { ZoomInProfilePicComponent } from './zoom-in-profile-pic/zoom-in-profile-pic.component';
+import { ZoomInFilePicComponent } from './zoom-in-file-pic/zoom-in-file-pic.component';
 
 
 
@@ -57,7 +59,9 @@ import {MatRadioModule} from '@angular/material/radio';
     HeaderComponent,
     TakepicComponent,
     EdituserComponent,
-    FilepicComponent
+    FilepicComponent,
+    ZoomInProfilePicComponent,
+    ZoomInFilePicComponent
   ],
   imports: [
     MatCardModule,
@@ -86,7 +90,7 @@ import {MatRadioModule} from '@angular/material/radio';
 
   providers: [FolderService],
   bootstrap: [AppComponent],
-  entryComponents:[SignupComponent,LoginComponent,DialogComponent,TakepicComponent,EdituserComponent,FilepicComponent]
+  entryComponents:[SignupComponent,LoginComponent,DialogComponent,TakepicComponent,EdituserComponent,FilepicComponent,ZoomInProfilePicComponent,ZoomInFilePicComponent]
 
 })
 export class AppModule { }
