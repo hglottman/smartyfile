@@ -21,7 +21,7 @@ export class FileUnitComponent implements OnInit {
 
   ngOnInit() {
     
-    
+  console.log(this.file);  
   }
 
   openDialog() {
