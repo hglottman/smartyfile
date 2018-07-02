@@ -79,8 +79,9 @@ export class FolderService {
     })
   }
 
-  deleteFolder(folder_id) {
-    this.http.delete<Folder[]>('/folder_api/delete/' + folder_id).subscribe(data => {
+  deleteFolder(folder) {
+
+    this.http.delete<Folder[]>('/folder_api/delete/' + folder.folder_id + '/' + folder.user_id ) .subscribe(data => {
       this.allFolders = data;
       this.allFoldersSubject.next(this.allFolders);
     })
