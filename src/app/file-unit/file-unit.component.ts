@@ -20,7 +20,7 @@ export class FileUnitComponent implements OnInit {
   constructor(private dialog : MatDialog) { }
 
   ngOnInit() {
-    
+    console.log(this.file)
     
   }
 
