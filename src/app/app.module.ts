@@ -40,6 +40,9 @@ import { FilepicComponent } from './filepic/filepic.component';
 import {MatRadioModule} from '@angular/material/radio';
 import { ZoomInProfilePicComponent } from './zoom-in-profile-pic/zoom-in-profile-pic.component';
 import { FilterComponent } from './filter/filter.component';
+import { AlertDialogComponent } from './alert-dialog/alert-dialog.component';
+
+
 
 
 
@@ -62,6 +65,8 @@ import { FilterComponent } from './filter/filter.component';
     FilepicComponent,
     ZoomInProfilePicComponent,
     FilterComponent,
+    AlertDialogComponent
+
   ],
   imports: [
     MatCardModule,
@@ -90,7 +95,19 @@ import { FilterComponent } from './filter/filter.component';
 
   providers: [FolderService],
   bootstrap: [AppComponent],
-  entryComponents:[SignupComponent,LoginComponent,DialogComponent,TakepicComponent,EdituserComponent,FilepicComponent,ZoomInProfilePicComponent]
+ 
+  entryComponents:[
+    SignupComponent,
+    LoginComponent,
+    DialogComponent,
+    TakepicComponent,
+    EdituserComponent,
+    AlertDialogComponent,
+  FilepicComponent,
+  ZoomInProfilePicComponent,
+    FilepicComponent
+  ]
+
 
 })
 export class AppModule { }
