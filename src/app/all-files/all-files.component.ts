@@ -5,6 +5,9 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { FileUnitComponent } from '../file-unit/file-unit.component';
 import { MatDialogConfig, MatDialog } from '@angular/material';
 import { DialogComponent } from '../dialog/dialog.component';
+import { MatTableDataSource } from '@angular/material';
+
+
 
 @Component({
   selector: 'app-all-files',
@@ -14,8 +17,14 @@ import { DialogComponent } from '../dialog/dialog.component';
 export class AllFilesComponent implements OnInit {
 
   files = new Array<File>();
+  filterString: string;
+  dataSource;
+  filesArray: File[]
+  folder_id: Number;
 
-  constructor(private folderService: FolderService, private route: ActivatedRoute, private dialog: MatDialog) { }
+  constructor(private folderService: FolderService, private route: ActivatedRoute, private dialog: MatDialog, private router: Router) {
+    this.dataSource = new MatTableDataSource(this.files);
+  }
 
   ngOnInit() {
     this.route.params.subscribe(params => {
@@ -23,14 +32,38 @@ export class AllFilesComponent implements OnInit {
     });
     this.folderService.allFilesObservable.subscribe((files) => {
       this.files = files;
-      console.log(this.files);
+      this.folder_id = this.files[0].folder_id;
+      // console.log(this.files);
     });
 
   }
+  onFilterChanged(filterString) {
+    console.log(filterString);
+    // this.router.navigate(['folder/file/:id'], { queryParams: { file_name: filterString }});
+    if (filterString !== undefined) {
+      this.getfilterd(filterString,this.folder_id)
+
+    }
+
+  }
+
+  zoomFilePic(the_file) {
+    console.log('this is form the all files comonent:')
+    console.log(the_file)
+    this.folderService.fileImageToDialog(the_file)
+  }
+
+  // applyFilter(filterValue) {
+  //   console.log(filterValue)
+  //   this.dataSource.filter = filterValue.trim().toLowerCase();
+  //   console.log(this.dataSource.filter)
+  // }
 
   deleteFile(file) {
     console.log(file)
     this.folderService.deleteFile(file);
   }
-
+  getfilterd(filterString,folder_id) {
+    this.folderService.getfilterd(filterString,folder_id)
+  }
 }

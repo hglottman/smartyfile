@@ -14,7 +14,7 @@ export class FolderService {
   public allFiles: Array<File>;
   public allFolders: Array<Folder>;
   public currentUser: User;
-
+  public currentFile:File;
 
   public userSubject: Subject<User> = new Subject<User>();
   public userOservable: Observable<User>
@@ -24,6 +24,8 @@ export class FolderService {
   public allFoldersObservable: Observable<Folder[]>;
   public filePicSubject: Subject<string> = new Subject<string>();
   public filePicObservable:Observable<string>;
+  public zoomPicSubject: Subject<string> = new Subject<string>();
+  public zoomPicObservable:Observable<string>;
 
   constructor(private http: HttpClient, private userService: UserService) {
     this.currentUser = this.userService.currentUser;
@@ -31,7 +33,7 @@ export class FolderService {
     this.allFilesObservable = this.allFilesSubject.asObservable();
     this.userOservable = this.userSubject.asObservable()
     this.filePicObservable = this.filePicSubject.asObservable()
-
+    this.zoomPicObservable = this.zoomPicSubject.asObservable()
 
   }
 
@@ -46,7 +48,17 @@ export class FolderService {
   }
 
   getFile(file_id) {
-    return this.http.get<any>('/file_api/' + file_id);
+    return this.http.get<any>('/file_api/' + file_id)
+  }
+
+  getfilterd(filterString,folder_id){
+    // console.log('hay')
+    console.log(filterString)
+    this.http.get<File[]>('/file_api/filer_file/'+filterString + '/' + folder_id).subscribe((data)=>{
+      console.log(data);
+      this.allFiles = data;
+      this.allFilesSubject.next(data);
+    })
   }
 
   addFile(newFile: File) {
@@ -94,6 +106,12 @@ export class FolderService {
   }
   saveFileImage(picLink){
     this.filePicSubject.next(picLink)
+  }
+
+  fileImageToDialog(the_file){
+    console.log('folder service')
+    console.log(the_file)
+    this.zoomPicSubject.next(the_file)
   }
 
 

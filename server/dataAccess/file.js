@@ -1,6 +1,7 @@
 var Sequelize = require('sequelize');
 var smartyfile = require('./dataAccess').connection;
 const { folder } = require('../dataAccess/folders');
+const Op = Sequelize.Op
 
 class File_Model {
 
@@ -47,6 +48,13 @@ class File_Model {
             where: {
                 file_id: file_id
             }
+        })
+    }
+    getFileName(file_name, folder_id){
+        return this.file.findAll({
+            where:{file_name:{[Op.like]:'%'+file_name+'%'}, folder_id : folder_id}
+        }).then (data => {
+            return data;
         })
     }
 

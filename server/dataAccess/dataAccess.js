@@ -4,9 +4,9 @@ var Sequelize=require('sequelize');
  class DataAccess {
     constructor(){
 
-        this.connection = new Sequelize('sql12245678', 'sql12245678', 'bYsL1X8vKE', {
+        this.connection = new Sequelize('smartyfile', 'root', 'Nn204376024', {
 
-            host: 'sql12.freemysqlhosting.net',
+            host: 'localhost',
             dialect: 'mysql',
             operatorsAliases: false, // prevent string deprication
             pool: { // You can read about the pool in the documentation
