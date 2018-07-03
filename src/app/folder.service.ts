@@ -13,8 +13,10 @@ export class FolderService {
 
   public allFiles: Array<File>;
   public allFolders: Array<Folder>;
+  public currentFolder : Number;
   public currentUser: User;
   public currentFile:File;
+  public fileImage: String;
 
   public userSubject: Subject<User> = new Subject<User>();
   public userOservable: Observable<User>
@@ -38,6 +40,7 @@ export class FolderService {
   }
 
   getAllFiles(folder_id): any {
+    this.currentFolder = folder_id
     const observable = this.http.get<File[]>('/file_api/' + folder_id);
     observable.subscribe((data) => {
       this.allFiles = data;
@@ -109,9 +112,7 @@ export class FolderService {
   }
 
   fileImageToDialog(the_file){
-    console.log('folder service')
-    console.log(the_file)
-    this.zoomPicSubject.next(the_file)
+    this.fileImage = the_file;
   }
 
 

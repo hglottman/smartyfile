@@ -32,18 +32,21 @@ export class AllFilesComponent implements OnInit {
     });
     this.folderService.allFilesObservable.subscribe((files) => {
       this.files = files;
-      this.folder_id = this.files[0].folder_id;
-      // console.log(this.files);
+      this.folder_id = this.folderService.currentFolder;
     });
 
   }
   onFilterChanged(filterString) {
     console.log(filterString);
-    // this.router.navigate(['folder/file/:id'], { queryParams: { file_name: filterString }});
-    if (filterString !== undefined) {
+    if(filterString === undefined || filterString === "") {
+      this.folderService.getAllFiles(this.folder_id);
+    }  else {
       this.getfilterd(filterString,this.folder_id)
+        
+      }
+  
 
-    }
+    
 
   }
 

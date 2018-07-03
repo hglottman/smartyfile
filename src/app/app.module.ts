@@ -41,6 +41,7 @@ import {MatRadioModule} from '@angular/material/radio';
 import { ZoomInProfilePicComponent } from './zoom-in-profile-pic/zoom-in-profile-pic.component';
 import { FilterComponent } from './filter/filter.component';
 import { AlertDialogComponent } from './alert-dialog/alert-dialog.component';
+import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
 
 
 
@@ -89,7 +90,8 @@ import { AlertDialogComponent } from './alert-dialog/alert-dialog.component';
     MatDatepickerModule,
     MatNativeDateModule,
     WebcamModule,
-    MatRadioModule
+    MatRadioModule,
+    MatProgressSpinnerModule,
     
   ],
 
