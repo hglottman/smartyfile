@@ -3,6 +3,7 @@
     <app-header></app-header>
   </div>
   <div class="folders-header">
+  <app-loading-indicator [loading]="loading"></app-loading-indicator>                  
     <div class="addfolder-toggle">
       <button mat-button color="primary" class="addnewfolder" (click)="toggleAddingNewFolder()">
         <i class="material-icons plusFolder">add_circle_outline</i>Add New Folder</button>
@@ -25,7 +26,6 @@
       </button>
     </div>
   </div>
-  <app-loading-indicator [loading]="loading"></app-loading-indicator>              
   <!-- <div class="folders-grid">
     <div class="folder" *ngFor="let folder of userFolders">
       <div class="folderName" [routerLink]="['file', folder.folder_id]">{{folder.folder_name}}
