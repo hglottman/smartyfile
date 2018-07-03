@@ -5,6 +5,7 @@
     grid-template-rows:  repeat(auto-fit, auto);
     /* background-color:  white; */
     min-height: 600px;
+    background-color: #CFD8DC;
 }
 
 .file-card {
