@@ -4,6 +4,8 @@ import { RouterModule, Routes, Router } from '@angular/router';
 import { User } from '../user';
 import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
 import {EdituserComponent} from '../edituser/edituser.component'
+import {ZoomInProfilePicComponent} from '../zoom-in-profile-pic/zoom-in-profile-pic.component'
+
 
 
 
@@ -22,6 +24,9 @@ export class HeaderComponent implements OnInit {
 
   ngOnInit() {
   }
+  zoomInImg() {
+    let dialogRef = this.dialog.open(ZoomInProfilePicComponent)
+  }
   openDialog(currentUser) {
     console.log(currentUser);
     let dialogRef = this.dialog.open(EdituserComponent, {
@@ -37,5 +42,6 @@ export class HeaderComponent implements OnInit {
     //   this.router.navigate([''])
     // })
   }
+  
 
 }

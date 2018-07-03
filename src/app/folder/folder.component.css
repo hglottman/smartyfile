@@ -1,6 +1,7 @@
 .app-grid {
     display: grid;
     grid-template: 65px 40px auto  / 1fr;
+  
     /* background-color: #37474F; */
     min-height: 600px;  
 }
@@ -8,6 +9,7 @@
 body{
     margin: 0%;
     padding: 0%;
+
 }
 
 
@@ -70,10 +72,7 @@ body{
     grid-row: 3 / 4;
     grid-column: 1 / 2;
     width: 100%;
-    margin: auto;
-    
-
-    
+    margin: auto; 
 }
 
 fa {
