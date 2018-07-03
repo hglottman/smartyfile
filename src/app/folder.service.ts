@@ -109,6 +109,8 @@ export class FolderService {
   }
 
   fileImageToDialog(the_file){
+    console.log('folder service')
+    console.log(the_file)
     this.zoomPicSubject.next(the_file)
   }
 
