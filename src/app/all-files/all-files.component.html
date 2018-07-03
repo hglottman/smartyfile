@@ -1,11 +1,11 @@
 <app-header></app-header>
+<app-filter [filterString]="filterString" (filterChanged)="onFilterChanged($event)"></app-filter>
 
 
 <!-- <mat-form-field>
   <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Filter">
 </mat-form-field> -->
 <div class='files-grid'>
-    <app-filter [filterString]="filterString" (filterChanged)="onFilterChanged($event)"></app-filter>
     <div class="filter-header" *ngIf="filterString?.length > 0">Filtering files by name: {{ filterString }}</div>
   <div *ngFor="let file of files" class="file-card">
     <app-file-unit [file]="file" buttonText="See File" (buttonOnClick)="openFile($event)" (zoomFilePic)="zoomFilePic($event)" (parentDelete)="deleteFile($event)">

@@ -22,11 +22,7 @@ export class ZoomInProfilePicComponent implements OnInit {
     }
 
   ngOnInit() {
-    this.folderService.zoomPicObservable.subscribe((data)=>{
-      console.log('zoomin')
-      console.log(data)
-      this.filePic = data;
-    })
+      this.filePic = this.folderService.fileImage;
   }
 
 }
