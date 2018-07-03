@@ -1,5 +1,5 @@
-<!-- <mat-card color = "primary">Smartyfile</mat-card>	
- -->
+<!-- <mat-card color = "primary">Smartyfile</mat-card>    
+-->
 
 <mat-toolbar color="primary">
 
@@ -10,17 +10,17 @@
     <span class="example-spacer"></span>
     <span class="example-fill-remaining-space"></span>
   </mat-toolbar-row>
-</mat-toolbar>
-<!--   
-<mat-toolbar >
+ </mat-toolbar>
+ <!--  
+ <mat-toolbar >
   <mat-toolbar-row class="header">
       
-<span class="smartyfile">Smartyfile </span> <br> <span class="slogen">   Works to keep what's important for you</span>
+ <span class="smartyfile">Smartyfile </span> <br> <span class="slogen">   Works to keep what's important for you</span>
   </mat-toolbar-row>
-</mat-toolbar> -->
-
-
-<div class="example-container">
+ </mat-toolbar> -->
+ 
+ 
+ <div class="example-container">
   <mat-form-field>
     <input matInput class="username" placeholder="User name" [(ngModel)]="username">
   </mat-form-field>
@@ -28,39 +28,9 @@
     <input matInput class="password" placeholder="Enter your password" [type]="hide ? 'password' : 'text'" [(ngModel)]="password">
     <mat-icon matSuffix (click)="hide = !hide">{{hide ? 'visibility' : 'visibility_off'}}</mat-icon>
   </mat-form-field>
-
   <div class="logButtons">
     <button mat-button type="button" (click)="login()">Login</button>
     <br>
     <button mat-button type="button" (click)="openDialog(user)">Sign-up</button>
-
-  <app-loading-indicator [loading]="loading"></app-loading-indicator>
-  <!-- <button mat-button color="primary" type="button" (click)="login()">Login</button>  -->
-</mat-card>
-<!-- <mat-card class="form-buttons">
- 
-  <button mat-button color="primary" class="actionBtn" (click)="triggerSnapshot();">Take A Snapshot</button>
-  <button mat-button color="primary" class="actionBtn" (click)="toggleWebcam();">Toggle Webcam</button>
-  <input id="cameraSwitchCheckbox" type="checkbox" [(ngModel)]="allowCameraSwitch">
-  <label for="cameraSwitchCheckbox">Allow Camera Switch</label>
-
-</mat-card>
-<div style="text-align:center">
-  <div>
-    <mat-card>
-      <webcam [height]="500" [width]="500" [trigger]="triggerObservable" (imageCapture)="handleImage($event)" *ngIf="showWebcam"
-        [allowCameraSwitch]="allowCameraSwitch" [switchCamera]="nextWebcamObservable" [videoOptions]="videoOptions" (cameraSwitched)="cameraWasSwitched($event)"
-        (initError)="handleInitError($event)"></webcam>
-      <div class="snapshot" *ngIf="webcamImage">
-        <h2>Nice one!</h2>
-        <img [src]="webcamImage.imageAsDataUrl" />
-      </div>
-    </mat-card>
-    <br/>
-    <br/>
-    <button mat-button color="primary" class="actionBtn" (click)="showNextWebcam(true);" [disabled]="!multipleWebcamsAvailable">Next Webcam</button>
-    <br/> DeviceId:
-    <input id="deviceId" type="text" [(ngModel)]="deviceId" style="width: 500px">
-    <button mat-button color="primary" (click)="showNextWebcam(deviceId);">Activate</button>
   </div>
-</div>
+ </div>
