@@ -2,57 +2,35 @@
  -->
 
 <mat-toolbar color="primary">
+
   <mat-toolbar-row>
-    <button mat-button class="home" routerLink="/">
-      <i class="fa fa-home fa-3x"></i>
-    </button>
+    <img src="https://image.flaticon.com/icons/svg/334/334786.svg" alt="files" class="icon">
+    <span class="smartyfile">Smartyfile</span>
+    <span class="slogen"> Works to keep what's important for you</span>
+    <span class="example-spacer"></span>
+    <span class="example-fill-remaining-space"></span>
   </mat-toolbar-row>
 </mat-toolbar>
+<!--   
+<mat-toolbar >
+  <mat-toolbar-row class="header">
+      
+<span class="smartyfile">Smartyfile </span> <br> <span class="slogen">   Works to keep what's important for you</span>
+  </mat-toolbar-row>
+</mat-toolbar> -->
 
 
-<mat-card class="example-container">
+<div class="example-container">
   <mat-form-field>
-    <input matInput placeholder="User name" [(ngModel)]="username">
+    <input matInput class="username" placeholder="User name" [(ngModel)]="username">
   </mat-form-field>
   <mat-form-field>
-    <input matInput placeholder="Enter your password" [type]="hide ? 'password' : 'text'" [(ngModel)]="password">
+    <input matInput class="password" placeholder="Enter your password" [type]="hide ? 'password' : 'text'" [(ngModel)]="password">
     <mat-icon matSuffix (click)="hide = !hide">{{hide ? 'visibility' : 'visibility_off'}}</mat-icon>
   </mat-form-field>
-  <button mat-button color="primary" type="button" (click)="login()">Login</button> 
-  <button mat-button color="primary" type="button" (click)="openDialog(user)">Sign-up</button>
-  <!-- <button mat-button color="primary" type="button" (click)="login()">Login</button>  -->
-</mat-card>
-<!-- <mat-card class="form-buttons">
- 
-  <button mat-button color="primary" class="actionBtn" (click)="triggerSnapshot();">Take A Snapshot</button>
-  <button mat-button color="primary" class="actionBtn" (click)="toggleWebcam();">Toggle Webcam</button>
-  <input id="cameraSwitchCheckbox" type="checkbox" [(ngModel)]="allowCameraSwitch">
-  <label for="cameraSwitchCheckbox">Allow Camera Switch</label>
-
-</mat-card>
-<div style="text-align:center">
-  <div>
-    <mat-card>
-      <webcam [height]="500" [width]="500" [trigger]="triggerObservable" (imageCapture)="handleImage($event)" *ngIf="showWebcam"
-        [allowCameraSwitch]="allowCameraSwitch" [switchCamera]="nextWebcamObservable" [videoOptions]="videoOptions" (cameraSwitched)="cameraWasSwitched($event)"
-        (initError)="handleInitError($event)"></webcam>
-      <div class="snapshot" *ngIf="webcamImage">
-        <h2>Nice one!</h2>
-        <img [src]="webcamImage.imageAsDataUrl" />
-      </div>
-    </mat-card>
-    <br/>
-    <br/>
-    <button mat-button color="primary" class="actionBtn" (click)="showNextWebcam(true);" [disabled]="!multipleWebcamsAvailable">Next Webcam</button>
-    <br/> DeviceId:
-    <input id="deviceId" type="text" [(ngModel)]="deviceId" style="width: 500px">
-    <button mat-button color="primary" (click)="showNextWebcam(deviceId);">Activate</button>
+  <div class="logButtons">
+    <button mat-button type="button" (click)="login()">Login</button>
+    <br>
+    <button mat-button type="button" (click)="openDialog(user)">Sign-up</button>
   </div>
 </div>
-
-
-
-<h4 *ngIf="errors.length > 0">Messages:</h4>
-<ul *ngFor="let error of errors">
-  <li>{{error | json}}</li>
-</ul> -->
