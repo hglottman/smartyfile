@@ -39,7 +39,7 @@ export class FolderComponent implements OnInit {
   }
 
   deleteFolder(folder) {
-    this.folderService.deleteFolder(folder.folder_id);
+    this.folderService.deleteFolder(folder);
   }
 
   getUserFiles(folder_id) {

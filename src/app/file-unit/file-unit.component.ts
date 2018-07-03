@@ -4,7 +4,6 @@ import { FolderService } from '../folder.service';
 import { AllFilesComponent } from '../all-files/all-files.component';
 import { MatDialogConfig, MatDialog } from '@angular/material';
 import { DialogComponent } from '../dialog/dialog.component';
-import {ZoomInFilePicComponent} from '../zoom-in-file-pic/zoom-in-file-pic.component'
 
 @Component({
   selector: 'app-file-unit',
@@ -23,11 +22,6 @@ export class FileUnitComponent implements OnInit {
   ngOnInit() {
   }
 
-  zoomInImg(currentFile) {
-    this.currentFile = this.file
-    // console.log(this.currentFile)
-    let dialogRef = this.dialog.open(ZoomInFilePicComponent)
-  }
   openDialog() {
   
     const dialogConfig = new MatDialogConfig();

@@ -28,14 +28,16 @@ class Folder_Model {
         });
     }
 
-    deleteFolder(id) {
+    deleteFolder(folder_id, user_id) {
+        console.log('this is what the ffolderjs got : ')
+        console.log(user_id)
         console.log(folder_id);
         return this.folder.update(
             { is_active: false },
             {
-                where: { folder_id: id }
+                where: { folder_id: folder_id }
             }).then(() => {
-                return this.folder.findAll({ where: { user_id: 1, is_active: true } }).then(data => {
+                return this.folder.findAll({ where: { user_id: user_id, is_active: true } }).then(data => {
                     return data;
                 }, err => {
                     console.error(err)

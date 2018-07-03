@@ -49,6 +49,16 @@ export class FolderService {
     return this.http.get<any>('/file_api/' + file_id)
   }
 
+  getfilterd(filterString,folder_id){
+    // console.log('hay')
+    console.log(filterString)
+    this.http.get<File[]>('/file_api/filer_file/'+filterString + '/' + folder_id).subscribe((data)=>{
+      console.log(data);
+      this.allFiles = data;
+      this.allFilesSubject.next(data);
+    })
+  }
+
   addFile(newFile: File) {
    return this.http.post<File>('/file_api/', { file: newFile })
   
@@ -79,8 +89,9 @@ export class FolderService {
     })
   }
 
-  deleteFolder(folder_id) {
-    this.http.delete<Folder[]>('/folder_api/delete/' + folder_id).subscribe(data => {
+  deleteFolder(folder) {
+
+    this.http.delete<Folder[]>('/folder_api/delete/' + folder.folder_id + '/' + folder.user_id ) .subscribe(data => {
       this.allFolders = data;
       this.allFoldersSubject.next(this.allFolders);
     })

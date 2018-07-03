@@ -32,8 +32,7 @@ export class DialogComponent implements OnInit {
   ngOnInit() {
     this.folderService.filePicObservable.subscribe((data) => {
       this.filePic = data
-      console.log('nadav')
-      console.log(this.filePic)
+
     })
 
   }
