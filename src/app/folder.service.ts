@@ -24,6 +24,8 @@ export class FolderService {
   public allFoldersObservable: Observable<Folder[]>;
   public filePicSubject: Subject<string> = new Subject<string>();
   public filePicObservable:Observable<string>;
+  public zoomPicSubject: Subject<string> = new Subject<string>();
+  public zoomPicObservable:Observable<string>;
 
   constructor(private http: HttpClient, private userService: UserService) {
     this.currentUser = this.userService.currentUser;
@@ -31,7 +33,7 @@ export class FolderService {
     this.allFilesObservable = this.allFilesSubject.asObservable();
     this.userOservable = this.userSubject.asObservable()
     this.filePicObservable = this.filePicSubject.asObservable()
-
+    this.zoomPicObservable = this.zoomPicSubject.asObservable()
 
   }
 
@@ -104,6 +106,10 @@ export class FolderService {
   }
   saveFileImage(picLink){
     this.filePicSubject.next(picLink)
+  }
+
+  fileImageToDialog(the_file){
+    this.zoomPicSubject.next(the_file)
   }
 
 

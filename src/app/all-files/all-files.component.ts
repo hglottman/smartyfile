@@ -44,6 +44,13 @@ export class AllFilesComponent implements OnInit {
       this.getfilterd(filterString,this.folder_id)
 
     }
+
+  }
+
+  zoomFilePic(the_file) {
+    console.log('this is form the all files comonent:')
+    console.log(the_file)
+    this.folderService.fileImageToDialog(the_file)
   }
 
   // applyFilter(filterValue) {
