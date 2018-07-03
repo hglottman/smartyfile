@@ -22,6 +22,7 @@ export class LoginComponent implements OnInit {
   hide = true;
   username;
   password;
+  loading:boolean = false
   // toggle webcam on/off
   public showWebcam = false;
   public allowCameraSwitch = true;
@@ -43,6 +44,7 @@ export class LoginComponent implements OnInit {
   constructor(public userService: UserService, public dialog: MatDialog, private router: Router) { }
 
   ngOnInit() {
+    this.loading = false
     WebcamUtil.getAvailableVideoInputs()
       .then((mediaDevices: MediaDeviceInfo[]) => {
         this.multipleWebcamsAvailable = mediaDevices && mediaDevices.length > 1;
@@ -56,6 +58,7 @@ export class LoginComponent implements OnInit {
     });
   }
   login() {
+    this.loading = true
     this.userService.Login(this.username, this.password)
     // this.router.navigate(['folder'])
   }

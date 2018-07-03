@@ -40,6 +40,8 @@ import { FilepicComponent } from './filepic/filepic.component';
 import {MatRadioModule} from '@angular/material/radio';
 import { ZoomInProfilePicComponent } from './zoom-in-profile-pic/zoom-in-profile-pic.component';
 import { FilterComponent } from './filter/filter.component';
+import { LoadingIndicatorComponent } from './loading-indicator/loading-indicator.component';
+import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
 
 
 
@@ -62,6 +64,7 @@ import { FilterComponent } from './filter/filter.component';
     FilepicComponent,
     ZoomInProfilePicComponent,
     FilterComponent,
+    LoadingIndicatorComponent,
   ],
   imports: [
     MatCardModule,
@@ -84,7 +87,8 @@ import { FilterComponent } from './filter/filter.component';
     MatDatepickerModule,
     MatNativeDateModule,
     WebcamModule,
-    MatRadioModule
+    MatRadioModule,
+    MatProgressSpinnerModule
     
   ],
 
