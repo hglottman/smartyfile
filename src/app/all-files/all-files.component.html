@@ -1,10 +1,13 @@
 <app-header></app-header>
+<app-filter [filterString]="filterString" (filterChanged)="onFilterChanged($event)"></app-filter>
+<div class="filter-header" *ngIf="filterString?.length > 0">Filtering dogs by name: {{ filterString }}</div>
+
+<!-- <mat-form-field>
+  <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Filter">
+</mat-form-field> -->
 <div class='files-grid'>
-      <div *ngFor="let file of files" class="file-card">
-          <app-file-unit 
-          [file]="file" buttonText="See File" 
-          (buttonOnClick)="openFile($event)"
-          (parentDelete) = "deleteFile($event)">
-        </app-file-unit>
-      </div>
+  <div *ngFor="let file of files" class="file-card">
+    <app-file-unit [file]="file" buttonText="See File" (buttonOnClick)="openFile($event)" (buttonOnClick)="zoomFilePic($event)" (parentDelete)="deleteFile($event)">
+    </app-file-unit>
+  </div>
 </div>

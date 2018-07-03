@@ -15,17 +15,17 @@
       <button mat-button class="home" routerLink="/folder">
         <i class="fa fa-home fa-3x"></i>
       </button>
-
+  
       <!-- </div> -->
     </mat-drawer-container>
     <span class="example-spacer"></span>
     <mat-card-header class="welcome">
       <mat-card-title>Welcome {{currentUser.first_name}}</mat-card-title>
     </mat-card-header>
-    <img mat-card-image *ngIf="currentUser.user_img" src="{{currentUser.user_img}}" alt="" class="img">
+    <img mat-card-image *ngIf="currentUser.user_img" [src]="currentUser.user_img" type="button" (click)="zoomInImg()" class="img">
     <i class="material-icons" *ngIf="!currentUser.user_img">
-        android
-        </i>
+      android
+    </i>
   </mat-toolbar-row>
 </mat-toolbar>
 <mat-drawer #drawer class="example-sidenav" mode="side">
