@@ -26,7 +26,8 @@ export class FileUnitComponent implements OnInit {
   ngOnInit() {
   }
   inLargePicDialog() {
-    this.zoomInImage()
+
+    this.zoomFilePic.emit(this.file.the_file)
     this.dialog.open(ZoomInProfilePicComponent)
   }
 
@@ -43,11 +44,5 @@ export class FileUnitComponent implements OnInit {
   deleteFile() {
     this.parentDelete.emit(this.file)
   }
-
-  zoomInImage() {
-    console.log(this.file.the_file);
-    this.zoomFilePic.emit(this.file.the_file)
-  }
-
 
 }

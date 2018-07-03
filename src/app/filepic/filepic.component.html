@@ -11,12 +11,12 @@
   <div style="text-align:center">
     <div>
       <mat-card>
-        <webcam [height]="350" [width]="350" [trigger]="triggerObservable" (imageCapture)="handleImage($event)" *ngIf="showWebcam"
+        <webcam [height]="200" [width]="200" [trigger]="triggerObservable" (imageCapture)="handleImage($event)" *ngIf="showWebcam"
           [allowCameraSwitch]="allowCameraSwitch" [switchCamera]="nextWebcamObservable" [videoOptions]="videoOptions" (cameraSwitched)="cameraWasSwitched($event)"
           (initError)="handleInitError($event)"></webcam>
         <div class="snapshot" *ngIf="webcamImage">
           <h2>Nice one!</h2>
-          <img [src]="webcamImage.imageAsDataUrl" />
+          <img class="picture" [src]="webcamImage.imageAsDataUrl" />
         </div>
       </mat-card>
       <!-- <br/>
