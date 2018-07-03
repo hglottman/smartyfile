@@ -19,7 +19,7 @@ export class FolderService {
   public fileImage: String;
 
   public userSubject: Subject<User> = new Subject<User>();
-  public userOservable: Observable<User>
+  public userOservable: Observable<User>;
   public allFilesSubject: Subject<File[]> = new Subject<File[]>();
   public allFilesObservable: Observable<File[]>;
   public allFoldersSubject: Subject<Folder[]> = new Subject<Folder[]>();
@@ -65,24 +65,24 @@ export class FolderService {
   }
 
   addFile(newFile: File) {
-   return this.http.post<File>('/file_api/', { file: newFile })
-  
+   return this.http.post<File>('/file_api/', { file: newFile });
+
   }
 
-  postNewFile (file : FormData) {
-   return this.http.post('/file_api/postfile', file)
+  postNewFile (file: FormData) {
+   return this.http.post('/file_api/postfile', file);
   }
 
   deleteFile(file) {
     this.http.delete<File[]>('/file_api/' + file.file_id).subscribe(() => {
       this.getAllFiles(file.folder_id);
-    })
+    });
 
   }
 
   editFile(updatedFile) {
     this.http.put<File[]>('/file_api/', { newFile: updatedFile }).subscribe((data) => {
-      this.allFilesSubject.next(data)
+      this.allFilesSubject.next(data);
     });
   }
 
@@ -91,7 +91,7 @@ export class FolderService {
     this.http.get<Array<Folder>>('/folder_api/' + id).subscribe((data) => {
       this.allFolders = data;
       this.allFoldersSubject.next(this.allFolders);
-    })
+    });
   }
 
   deleteFolder(folder) {
@@ -99,13 +99,13 @@ export class FolderService {
     this.http.delete<Folder[]>('/folder_api/delete/' + folder.folder_id + '/' + folder.user_id ) .subscribe(data => {
       this.allFolders = data;
       this.allFoldersSubject.next(this.allFolders);
-    })
+    });
   }
 
   addNewFolder(newFolder, id) {
     this.http.post<Folder[]>('/folder_api/add_folder/' + id, { folder: newFolder }).subscribe((allfolders) => {
       this.allFoldersSubject.next(allfolders);
-    })
+    });
   }
   saveFileImage(picLink){
     this.filePicSubject.next(picLink)

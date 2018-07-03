@@ -4,6 +4,7 @@ var Sequelize=require('sequelize');
  class DataAccess {
     constructor(){
 
+
         this.connection = new Sequelize('sql12245678', 'sql12245678', 'bYsL1X8vKE', {
 
             host: 'sql12.freemysqlhosting.net',

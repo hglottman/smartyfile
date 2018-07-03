@@ -97,6 +97,7 @@ import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
     MatProgressSpinnerModule
 
     
+
   ],
 
   providers: [FolderService],
@@ -113,6 +114,7 @@ import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
   ZoomInProfilePicComponent,
     FilepicComponent
   ]
+
 
 
 })
