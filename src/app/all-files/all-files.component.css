@@ -3,7 +3,7 @@
     display: grid;
     grid-template-columns: repeat(4, 1fr);
     grid-template-rows:  repeat(auto-fit, auto);
-    background-color:  rgb(18, 17, 20);
+    /* background-color:  white; */
     min-height: 600px;
 }
 

@@ -1,6 +1,5 @@
 <h2 mat-dialog-title>{{description.folder_id}}</h2>
-
-<mat-dialog-content>
+<mat-dialog-content *ngIf="show==true">
 
   <mat-form-field>
     <input matInput placeholder="File Name" [(ngModel)]="description.file_name">
@@ -34,8 +33,10 @@
   
 
 </mat-dialog-content>
+<app-loading-indicator [loading]="loading"></app-loading-indicator>
 
 <mat-dialog-actions>
   <button class="mat-raised-button" (click)="close()">Close</button>
-  <button class="mat-raised-button mat-primary" (click)="save()">Save</button>
+  <!-- <app-loading-indicator [loading]="loading"></app-loading-indicator>                -->
+  <button class="mat-raised-button mat-primary" (click)="save()">Save</button>  
 </mat-dialog-actions>

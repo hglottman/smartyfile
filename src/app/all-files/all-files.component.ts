@@ -21,16 +21,19 @@ export class AllFilesComponent implements OnInit {
   dataSource;
   filesArray: File[]
   folder_id: Number;
+  loading:boolean = false
 
   constructor(private folderService: FolderService, private route: ActivatedRoute, private dialog: MatDialog, private router: Router) {
     this.dataSource = new MatTableDataSource(this.files);
   }
 
   ngOnInit() {
+    this.loading = true
     this.route.params.subscribe(params => {
       this.folderService.getAllFiles(params.id);
     });
     this.folderService.allFilesObservable.subscribe((files) => {
+      this.loading = false            
       this.files = files;
       this.folder_id = this.folderService.currentFolder;
     });

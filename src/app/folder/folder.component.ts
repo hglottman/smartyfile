@@ -20,14 +20,17 @@ export class FolderComponent implements OnInit {
   public newFolder : Folder;
   public currentUser;
   public isActive = false;
+  loading:boolean = false
 
   constructor(private folderService : FolderService, private dialog : MatDialog, private userService : UserService) {
    }
 
   ngOnInit() {
+    this.loading = true
       this.currentUser = this.folderService.currentUser;
       this.folderService.getUserFolders(this.currentUser.user_id);
       this.folderService.allFoldersObservable.subscribe((data) => {
+        this.loading = false
         this.userFolders = data;
   
       })
@@ -45,6 +48,7 @@ export class FolderComponent implements OnInit {
 
   getUserFiles(folder_id) {
     this.folderService.getAllFiles(folder_id);
+    this.loading = true    
   }
 
   openDialog(folder) {

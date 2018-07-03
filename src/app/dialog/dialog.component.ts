@@ -18,6 +18,8 @@ export class DialogComponent implements OnInit {
   newFile = new FormData();
   toggelRadio: string = "1"
   filePic;
+  loading:boolean = false
+  show = true;
 
 
   constructor(
@@ -31,9 +33,9 @@ export class DialogComponent implements OnInit {
 
 
   ngOnInit() {
+    this.loading = false
     this.folderService.filePicObservable.subscribe((data) => {
       this.filePic = data
-
     })
   }
 
@@ -46,6 +48,10 @@ export class DialogComponent implements OnInit {
   }
 
   save() {
+
+    this.loading = true
+    this.show = false
+    console.log(this.description.file_name)
 
     if (this.description.upload_date !== undefined) {
       this.dialogRef.close(
