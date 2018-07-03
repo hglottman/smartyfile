@@ -4,6 +4,7 @@ import { FormGroup, FormBuilder } from '@angular/forms';
 import { File } from '../file';
 import { FolderService } from '../folder.service';
 import { FilepicComponent } from '../filepic/filepic.component'
+import { AlertDialogComponent } from '../alert-dialog/alert-dialog.component';
 
 
 @Component({
@@ -22,7 +23,7 @@ export class DialogComponent implements OnInit {
   constructor(
     private dialogRef: MatDialogRef<DialogComponent>,
     private folderService: FolderService,
-    @Inject(MAT_DIALOG_DATA) data, public dialog: MatDialog) {
+    @Inject(MAT_DIALOG_DATA) data, private dialog: MatDialog) {
     data.upload_date === undefined ? this.update = false : this.update = true;
     this.description = new File();
     this.description = data;
@@ -32,17 +33,18 @@ export class DialogComponent implements OnInit {
   ngOnInit() {
     this.folderService.filePicObservable.subscribe((data) => {
       this.filePic = data
-      console.log('nadav')
-      console.log(this.filePic)
     })
-
   }
+
+  openAlertDialog() {
+    this.dialog.open(AlertDialogComponent)
+  }
+
   openDialog() {
     let dialogRef = this.dialog.open(FilepicComponent);
   }
 
   save() {
-    console.log(this.description.file_name)
 
     if (this.description.upload_date !== undefined) {
       this.dialogRef.close(
@@ -62,7 +64,10 @@ export class DialogComponent implements OnInit {
         this.folderService.postNewFile(this.newFile).subscribe((filename) => {
           this.description.the_file = filename;
           this.dialogRef.close(
-            this.folderService.addFile(this.description).subscribe(() => {
+            this.folderService.addFile(this.description).subscribe((data) => {
+              if(data !== undefined) {
+                this.openAlertDialog()
+              }
               this.description = new File();
             })
           )

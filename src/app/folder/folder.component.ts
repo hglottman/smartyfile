@@ -8,6 +8,7 @@ import { Subject } from 'rxjs';
 import { Observable } from 'rxjs';
 import { User } from '../user';
 
+
 @Component({
   selector: 'app-folder',
   templateUrl: './folder.component.html',
@@ -45,8 +46,6 @@ export class FolderComponent implements OnInit {
   getUserFiles(folder_id) {
     this.folderService.getAllFiles(folder_id);
   }
-
-  
 
   openDialog(folder) {
     let folder_id = folder.folder_id;

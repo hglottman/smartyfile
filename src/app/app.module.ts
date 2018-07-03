@@ -38,6 +38,8 @@ import { TakepicComponent } from './takepic/takepic.component';
 import { EdituserComponent } from './edituser/edituser.component';
 import { FilepicComponent } from './filepic/filepic.component';
 import {MatRadioModule} from '@angular/material/radio';
+import { AlertDialogComponent } from './alert-dialog/alert-dialog.component';
+
 
 
 
@@ -57,7 +59,8 @@ import {MatRadioModule} from '@angular/material/radio';
     HeaderComponent,
     TakepicComponent,
     EdituserComponent,
-    FilepicComponent
+    FilepicComponent,
+    AlertDialogComponent
   ],
   imports: [
     MatCardModule,
@@ -86,7 +89,15 @@ import {MatRadioModule} from '@angular/material/radio';
 
   providers: [FolderService],
   bootstrap: [AppComponent],
-  entryComponents:[SignupComponent,LoginComponent,DialogComponent,TakepicComponent,EdituserComponent,FilepicComponent]
+  
+  entryComponents:[
+    SignupComponent,
+    LoginComponent,
+    DialogComponent,
+    TakepicComponent,
+    EdituserComponent,
+    AlertDialogComponent,
+    FilepicComponent]
 
 })
 export class AppModule { }
