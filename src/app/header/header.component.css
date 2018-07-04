@@ -1,20 +1,19 @@
-
-.mat-toolbar-row{
+.mat-toolbar-row {
   background-color: #37474F;
   padding-top: 1%;
   width: 100%;
 }
 
-.mat-toolbar-row.mat-toolbar-single-row{
+.mat-toolbar-row.mat-toolbar-single-row {
   width: 51%;
-margin: auto;
+  margin: auto;
 }
 
-.mat-toolbar-multiple-rows{
-  background-color: #37474F;  
+.mat-toolbar-multiple-rows {
+  background-color: #37474F;
 }
 
-.smartyfile{
+.smartyfile {
   color: white;
   font-weight: bold;
   text-align: center;
@@ -22,70 +21,73 @@ margin: auto;
   margin-right: 1%;
 }
 
-.icon{
+.icon {
   width: 12%;
   height: 88%;
 }
 
-.headerButtons{
+.headerButtons {
   color: white;
   position: absolute;
   right: 0px;
 }
 
-.welcomeDiv{
+.welcomeDiv {
   margin-left: 54%;
-  padding-left: 10%;}
+  padding-left: 10%;
+}
 
-  .img{
-    height: auto;
-    width: 40px;
-    border-radius: 50%;
-    margin-left: 1%;
-    margin-bottom: 10%;
-    padding-left: 8%;
-  }
+.img {
+  height: auto;
+  width: 40px;
+  border-radius: 20%;
+  margin-left: 1%;
+  margin-bottom: 10%;
+  padding-left: 8%;
+}
 
-  .example-spacer {
-    flex: 1 1 auto;
-  }
+.example-spacer {
+  flex: 1 1 auto;
+}
 
-  .welcome{
-    font-size: 66%;
-  }
+.welcome {
+  font-size: 66%;
+}
 
-  .headerWellcome{
-    font-weight: bold;
-    font-size: 60%;
-    margin: auto;
-  }
+.headerWellcome {
+  font-weight: bold;
+  font-size: 60%;
+  margin: auto;
+}
 
-  .welcomeImg{
-    font-weight: bold;
-color: white;
-  }
+.welcomeImg {
+  font-weight: bold;
+  color: white;
+}
 
+i {
+  color: white;
+}
 
-  i{
-    color: white;
-  }
+.menuButton {
+  background-color: #37474F;
+}
 
-  .menuButton{
-    background-color: #37474F;
-  }
+.containerMenuButton[_ngcontent-c7] {
+  background-color: #37474F;
+  position: absolute;
+  right: 0px;
+  margin-top: 0.5%;
+}
 
-  .containerMenuButton[_ngcontent-c7] {
-    background-color: #37474F;
-    position: absolute;
-    right: 0px;
-    margin-top: 0.5%;
-  }
+.arrowButton {
+  color: black;
+}
 
-  .arrowButton{
-    color: black;
-  }
+.containerMenuButton {
+  background-color: #37474F;
+}
 
-  .containerMenuButton{
-    background-color: #37474F;
-  }
-
+.mat-drawer-container {
+  background-color: #37474F;
+}

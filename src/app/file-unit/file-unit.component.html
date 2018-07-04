@@ -9,7 +9,7 @@
         <h3>Upload date: {{file.upload_date}}</h3>
         <h4><strong>Start date:</strong> {{file.start_date}}</h4>
         <h4><strong>End date:</strong> {{file.end_date}}</h4>
-      <img src = "{{file.the_file}}" class="picture">      
+      <img src = "{{file.the_file}}" class="picture" type="button" (click)="inLargePicDialog()">      
         <p>Notes: {{file.notes}}</p>
       </mat-card-content>
    

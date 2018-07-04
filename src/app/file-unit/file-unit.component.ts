@@ -40,7 +40,6 @@ export class FileUnitComponent implements OnInit {
     const d1: Date = new Date();
     const d2: Date = new Date(this.file.end_date);
     const difference = dateDiffInDays(d1, d2);
-    console.log(difference);
 
     function cellColorF(dayDifference) {
       if (0 < dayDifference && dayDifference < 15) {

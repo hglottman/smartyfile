@@ -18,6 +18,7 @@ import {ZoomInProfilePicComponent} from '../zoom-in-profile-pic/zoom-in-profile-
 export class HeaderComponent implements OnInit {
   log;
   showFiller = false;
+  nav_position: string = 'end';
   public currentUser: User;
   constructor(public userService: UserService, public dialog: MatDialog, private router: Router) {
     this.currentUser = userService.currentUser;

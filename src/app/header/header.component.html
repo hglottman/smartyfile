@@ -1,28 +1,33 @@
 <mat-toolbar color="primary">
 
-    <mat-toolbar-row>
-      <img src="https://image.flaticon.com/icons/svg/334/334786.svg" alt="files" class="icon">
-      <button mat-button class="smartyfile" routerLink="/folder">Smartyfile</button>
+  <mat-toolbar-row>
+    <img src="https://image.flaticon.com/icons/svg/334/334786.svg" alt="files" class="icon">
+    <button mat-button class="smartyfile" routerLink="/folder">Smartyfile</button>
 
-  <div class="welcomeDiv">
+    <div class="welcomeDiv">
       <span class="welcome">Welcome {{currentUser.first_name}}</span>
       <br>
-      <img mat-card-image *ngIf="currentUser.user_img" src="{{currentUser.user_img}}" alt="" class="img">
-    </div>
-
-      <button mat-button class="containerMenuButton" type="button" mat-button (click)="drawer.toggle()" (click)="showFiller = !showFiller"
-      mat-raised-button>
-      <i class="material-icons menuButton">
-        menu
+      <img mat-card-image *ngIf="currentUser.user_img" src="{{currentUser.user_img}}" alt="" class="img" type="button" (click)="zoomInImg()">
+      <i *ngIf="!currentUser.user_img" class="material-icons">
+        android
       </i>
-    </button>
-    </mat-toolbar-row>
-  </mat-toolbar>
+    </div>
+    <mat-drawer-container class="example-container" autosize>
 
 
-<mat-drawer #drawer class="example-sidenav" mode="side"  position="end">
-  
+      <div class="example-sidenav-content">
+        <button type="button" mat-button (click)="drawer.toggle()">
+          <i class="material-icons menuButton">
+            menu
+          </i>
+        </button>
+      </div>
 
+    </mat-drawer-container>
+  </mat-toolbar-row>
+</mat-toolbar>
+
+<mat-drawer #drawer class="example-sidenav" mode="side" [position]="nav_position">
   <button type="button" mat-button (click)="drawer.toggle()">
     <i class="material-icons arrowButton">
       keyboard_arrow_left
