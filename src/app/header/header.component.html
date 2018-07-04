@@ -2,19 +2,15 @@
 
     <mat-toolbar-row>
       <img src="https://image.flaticon.com/icons/svg/334/334786.svg" alt="files" class="icon">
-      <span type="arrowButton" class="smartyfile" routerLink="/folder">Smartyfile&nbsp;&nbsp;</span>
-      <!-- <span class="slogen"> Works to keep what's important for you</span> -->
-      <span class="example-spacer"></span>
-      <span class="example-fill-remaining-space"></span>
-  
-      <span>Welcome {{currentUser.first_name}}</span>
-      <img mat-card-image *ngIf="currentUser.user_img" src="{{currentUser.user_img}}" alt="" class="img">
-  
-      <button mat-button class="home" routerLink="/folder">
-        <i class="fa fa-home fa-3x"></i>
-      </button>
+      <button mat-button class="smartyfile" routerLink="/folder">Smartyfile</button>
 
-      <button mat-button class="containerMenuButton" color="primary" type="button" mat-button (click)="drawer.toggle()" (click)="showFiller = !showFiller"
+  <div class="welcomeDiv">
+      <span class="welcome">Welcome {{currentUser.first_name}}</span>
+      <br>
+      <img mat-card-image *ngIf="currentUser.user_img" src="{{currentUser.user_img}}" alt="" class="img">
+    </div>
+
+      <button mat-button class="containerMenuButton" type="button" mat-button (click)="drawer.toggle()" (click)="showFiller = !showFiller"
       mat-raised-button>
       <i class="material-icons menuButton">
         menu
@@ -22,41 +18,11 @@
     </button>
     </mat-toolbar-row>
   </mat-toolbar>
-<!-- <mat-toolbar>
-  <mat-toolbar-row class="header">
-    <img src="https://image.flaticon.com/icons/svg/334/334786.svg" alt="files" class="icon">
-    <span class="smartyfile">Smartyfile </span>
-    <div color="primary" class="headerButtons">
-      <mat-drawer-container class="example-container" autosize style="background-color: #37474F">
-        <button mat-button class="home" routerLink="/folder">
-          <i class="fa fa-home fa-3x"></i>
-        </button>
-        <button mat-button class="containerMenuButton" color="primary" type="button" mat-button (click)="drawer.toggle()" (click)="showFiller = !showFiller"
-          mat-raised-button>
-
-          <i class="material-icons menuButton">
-            menu
-          </i>
-        </button>
-      </mat-drawer-containerhttps://github.com/talfaran/smartyfile/pull/25/conflict?name=src%252Fapp%252Fheader%252Fheader.component.html&ancestor_oid=9c43efb320cc29804c0573863bfa017cba9f6237&base_oid=82caf162618f8e421d1e5fafe324122ace12ed6e&head_oid=5004fddd96c6cae85733e25134d56d37b0c11192>
-
-    </div>
-    <div class="welcomeImg">
-      <mat-card-header class="welcome">
-        <mat-card-title class="headerWellcome">Welcome {{currentUser.first_name}}</mat-card-title>
-      </mat-card-header>
-      <img mat-card-image *ngIf="currentUser.user_img" src="{{currentUser.user_img}}" alt="" class="img">
-      <i class="material-icons" *ngIf="!currentUser.user_img">
-        android
-      </i>
-    </div>
-
-  </mat-toolbar-row>
-</mat-toolbar>
 
 
+<mat-drawer #drawer class="example-sidenav" mode="side"  position="end">
+  
 
-<mat-drawer #drawer class="example-sidenav" position="end" mode="side">
   <button type="button" mat-button (click)="drawer.toggle()">
     <i class="material-icons arrowButton">
       keyboard_arrow_left
@@ -66,4 +32,4 @@
   <button mat-button (click)="getLogOut()">LOG OUT</button>
   <br>
   <button mat-button (click)="openDialog(currentUser)">Edit user</button>
-</mat-drawer> -->
+</mat-drawer>

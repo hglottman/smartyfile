@@ -2,10 +2,11 @@
 
     <div class="addfolder">
         <mat-form-field>
-            <input matInput class="folder-input" [(ngModel)] = "newFolder.folder_name" placeholder="Enter Folder Name ">
+            <input matInput type="text" class="folder-input" [(ngModel)] = "newFolder.folder_name" placeholder="Enter Folder Name ">
           </mat-form-field>
-      </div>
+ 
       <button mat-button class="create-btn" (click)="addNewFolder()">CREATE</button>
+    </div>
 
 
 
