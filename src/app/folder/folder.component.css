@@ -60,8 +60,8 @@ body{
 
 
 .folders-grid {
-    padding-top: 25px;    
-    padding-left: 40px;
+    padding-top: 4%;
+    padding-left: 4%;
     grid-row: 3 / 4;
     display:grid;
     grid-template: auto /  repeat(5,1fr);
