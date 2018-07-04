@@ -1,8 +1,8 @@
 
 .mat-toolbar-row{
-  background-color: #37474F; 
-  width: 100%; 
-
+  background-color: #37474F;
+  padding-top: 1%;
+  width: 100%;
 }
 
 .mat-toolbar-row.mat-toolbar-single-row{
@@ -33,33 +33,26 @@ margin: auto;
   right: 0px;
 }
 
-
-.mat-button, .mat-flat-button, .mat-icon-button, .mat-stroked-button {
-  overflow: hidden !important;
-}
+.welcomeDiv{
+  margin-left: 54%;
+  padding-left: 10%;}
 
   .img{
-    /* width: 7%;
     height: auto;
-    border-radius: 25%;
-    margin-left: 1%; */
-        /* width: 7%; */
-        height: 41px;
-        width: 41px;
-        /* padding-bottom: 9px; */
-        border-radius: 50%;
-        margin-left: 1%;
-        /* border: 1px solid white; */
-        margin-bottom: 7px;
+    width: 40px;
+    border-radius: 50%;
+    margin-left: 1%;
+    margin-bottom: 10%;
+    padding-left: 8%;
   }
+
   .example-spacer {
     flex: 1 1 auto;
   }
-  /* .welcome{
-    padding-top: 8px;
-    margin-right: 15px;
-    margin-top: 10px;
-  } */
+
+  .welcome{
+    font-size: 66%;
+  }
 
   .headerWellcome{
     font-weight: bold;
@@ -72,20 +65,20 @@ margin: auto;
 color: white;
   }
 
-  .mat-toolbar-row{
-    background-color: #37474F;
-    padding-top: 10px;
-    padding-right: 30px;
-  }
 
   i{
     color: white;
   }
 
   .menuButton{
-        position: absolute;
-    right: 0px;
     background-color: #37474F;
+  }
+
+  .containerMenuButton[_ngcontent-c7] {
+    background-color: #37474F;
+    position: absolute;
+    right: 0px;
+    margin-top: 0.5%;
   }
 
   .arrowButton{
@@ -95,3 +88,4 @@ color: white;
   .containerMenuButton{
     background-color: #37474F;
   }
+
