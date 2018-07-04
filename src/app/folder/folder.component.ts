@@ -21,6 +21,8 @@ export class FolderComponent implements OnInit {
   public currentUser;
   public isActive = false;
   loading:boolean = false
+  btnToggle = 1;
+  public newFolderName : string;
 
   constructor(private folderService : FolderService, private dialog : MatDialog, private userService : UserService) {
    }
@@ -63,5 +65,15 @@ export class FolderComponent implements OnInit {
 
     this.dialog.open(DialogComponent, dialogConfig);
 }
+
+editFolderMode() {
+this.btnToggle = 0;
+}
+
+finishEditFolder(folder_id) {
+  this.folderService.updateFolderName(this.newFolderName,this.currentUser.user_id,folder_id)
+  this.btnToggle = 1;
+}
+
 
 }

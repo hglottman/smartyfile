@@ -51,7 +51,6 @@ export class LoginComponent implements OnInit {
       });
   }
   openDialog(user) {
-    console.log(user);
     let dialogRef = this.dialog.open(SignupComponent, {
 
       data: { user: user }
