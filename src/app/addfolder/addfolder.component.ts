@@ -12,10 +12,12 @@ export class AddfolderComponent implements OnInit {
 
   public newFolder: Folder = new Folder();
   public user_id: number;
+  toggleInput:boolean = false
 
   constructor(private folderService: FolderService) { }
 
   ngOnInit() {
+    this.toggleInput = false
     this.user_id = this.folderService.currentUser.user_id
       this.newFolder.date = new Date();
       this.newFolder.is_active = true;
@@ -24,6 +26,7 @@ export class AddfolderComponent implements OnInit {
   }
 
   addNewFolder() {
+    this.toggleInput = true
     this.folderService.addNewFolder(this.newFolder, this.user_id);
   }
 
