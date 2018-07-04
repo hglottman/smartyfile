@@ -8,6 +8,7 @@ import { Subject } from 'rxjs';
 import { Observable } from 'rxjs';
 import { User } from '../user';
 
+
 @Component({
   selector: 'app-folder',
   templateUrl: './folder.component.html',
@@ -19,14 +20,17 @@ export class FolderComponent implements OnInit {
   public newFolder : Folder;
   public currentUser;
   public isActive = false;
+  loading:boolean = false
 
   constructor(private folderService : FolderService, private dialog : MatDialog, private userService : UserService) {
    }
 
   ngOnInit() {
+    this.loading = true
       this.currentUser = this.folderService.currentUser;
       this.folderService.getUserFolders(this.currentUser.user_id);
       this.folderService.allFoldersObservable.subscribe((data) => {
+        this.loading = false
         this.userFolders = data;
   
       })
@@ -39,14 +43,13 @@ export class FolderComponent implements OnInit {
   }
 
   deleteFolder(folder) {
-    this.folderService.deleteFolder(folder.folder_id);
+    this.folderService.deleteFolder(folder);
   }
 
   getUserFiles(folder_id) {
     this.folderService.getAllFiles(folder_id);
+    this.loading = true    
   }
-
-  
 
   openDialog(folder) {
     let folder_id = folder.folder_id;

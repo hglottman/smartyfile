@@ -39,13 +39,20 @@ router.get('/:folder_id', (req, res) => {
     res.send(JSON.stringify(data))
   })
 })
-
-router.get('/:folder_id/:file_id', (req, res) => {
-  var fileId = req.params.file_id
-  fileModel.getFile(fileId).then(data => {
+router.get('/filer_file/:file_name/:folder_id',(req,res)=>{
+  var filterString = req.params.file_name
+  let folder_id = req.params.folder_id;
+  fileModel.getFileName(filterString, folder_id).then(data => {
+    console.log(typeof data);
     res.send(JSON.stringify(data))
   })
 })
+// router.get('/:folder_id/:file_id', (req, res) => {
+//   var fileId = req.params.file_id
+//   fileModel.getFile(fileId).then(data => {
+//     res.send(JSON.stringify(data))
+//   })
+// })
 
 router.post('/', (req, res) => {
   let newFile = req.body.file;

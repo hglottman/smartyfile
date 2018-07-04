@@ -10,6 +10,9 @@ const foldersModel = require('./server/dataAccess/folders')
 const app = express();
 var nodemailer = require('nodemailer');
 
+var dayInMilliseconds = 1000 * 60 * 60 * 24;
+setInterval(function() { usersDataFetch() },dayInMilliseconds );
+
 // a function to get all the relevent files, and notes from the user. this funtion will use the nodemailer function to send the user a file.
 function usersDataFetch() {
 
@@ -70,7 +73,7 @@ function automaticMailSender(emailInfo) {
 
   var mailOptions = {
     from: 'smartyfile9000@gmail.com',
-    to: 'tal1faran@gmail.com',
+    to: emailInfo.email_adress,
     subject: 'This is a Smartyfile reminder for: ' + emailInfo.fileName + ', that will end in: ' + emailInfo.fileEndDate,
     text: emailInfo.fileNote
   };
