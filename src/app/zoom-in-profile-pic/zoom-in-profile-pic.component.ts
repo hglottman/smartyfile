@@ -18,7 +18,7 @@ export class ZoomInProfilePicComponent implements OnInit {
   constructor(public dialogRef: MatDialogRef<ZoomInProfilePicComponent>,
     public folderService:FolderService,
     @Inject(MAT_DIALOG_DATA) public data: any,public userService:UserService, public dialog: MatDialog) {
-      this.currentUser = this.userService.currentUser
+      // this.currentUser = this.userService.currentUser
     }
 
   ngOnInit() {
