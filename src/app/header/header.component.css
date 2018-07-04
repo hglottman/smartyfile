@@ -1,32 +1,93 @@
-/* .example-container {
-    width: 500px;
-    height: 300px;
-    border: 1px solid rgba(0, 0, 0, 0.5);
-  }
-  
-  .example-sidenav-content {
-    display: flex;
-    height: 100%;
-    align-items: center;
-    justify-content: center;
-  }
-  
-  .example-sidenav {
-    padding: 20px;
-  } */
-  .img{
-    width: 70px;
-    height:auto;
-    border-radius: 25%;
-    direction: rtl;
-    float: right;
-    padding:0 14px;
-    margin-top: 15px;
-  }
-  .example-spacer {
-    flex: 1 1 auto;
-  }
-  .welcome{
-    margin-right: 15px;
-    margin-top: 10px;
-  }
+.mat-toolbar-row {
+  background-color: #37474F;
+  padding-top: 1%;
+  width: 100%;
+}
+
+.mat-toolbar-row.mat-toolbar-single-row {
+  width: 51%;
+  margin: auto;
+}
+
+.mat-toolbar-multiple-rows {
+  background-color: #37474F;
+}
+
+.smartyfile {
+  color: white;
+  font-weight: bold;
+  text-align: center;
+  font-size: 130%;
+  margin-right: 1%;
+}
+
+.icon {
+  width: 12%;
+  height: 88%;
+}
+
+.headerButtons {
+  color: white;
+  position: absolute;
+  right: 0px;
+}
+
+.welcomeDiv {
+  margin-left: 54%;
+  padding-left: 10%;
+}
+
+.img {
+  height: auto;
+  width: 40px;
+  border-radius: 20%;
+  margin-left: 1%;
+  margin-bottom: 10%;
+  padding-left: 8%;
+}
+
+.example-spacer {
+  flex: 1 1 auto;
+}
+
+.welcome {
+  font-size: 66%;
+}
+
+.headerWellcome {
+  font-weight: bold;
+  font-size: 60%;
+  margin: auto;
+}
+
+.welcomeImg {
+  font-weight: bold;
+  color: white;
+}
+
+i {
+  color: white;
+}
+
+.menuButton {
+  background-color: #37474F;
+}
+
+.containerMenuButton[_ngcontent-c7] {
+  background-color: #37474F;
+  position: absolute;
+  right: 0px;
+  margin-top: 0.5%;
+}
+
+.arrowButton {
+  color: black;
+}
+
+.containerMenuButton {
+  background-color: #37474F;
+}
+
+.mat-drawer-container {
+  background-color: #37474F;
+}

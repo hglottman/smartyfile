@@ -1,23 +1,21 @@
 <mat-card class = "file-unit">
 
-  <mat-card-header class="header">
-     <h1>{{file.file_name}}</h1> 
-     <br>
-     <br>
-  </mat-card-header>
-
-    <mat-card-content class ="content">
-      <h3>Upload date: {{file.upload_date}}</h3>
-      <h4><strong>Start date:</strong> {{file.start_date}}</h4>
-      <h4><strong>End date:</strong> {{file.end_date}}</h4>
-    <img src = "{{file.the_file}}" class="picture">      
-      <p>Notes: {{file.notes}}</p>
-    </mat-card-content>
-
-    <mat-card-actions calls="actions">
-      <button mat-button (click) = "openDialog()"><i class="fas fa-pencil-alt fa-2x"></i></button>	
-      <button mat-button (click)="deleteFile()"><i class="fas fa-trash-alt fa-2x"></i></button>	
-    </mat-card-actions>	
-
-</mat-card>
-
+    <mat-card-header class="header">
+       <h1>{{file.file_name}}</h1><i [style.color]="colorFile()" class="material-icons">hourglass_full</i>
+       <br>
+    </mat-card-header>
+   
+      <mat-card-content class ="content">
+        <h3>Upload date: {{file.upload_date}}</h3>
+        <h4><strong>Start date:</strong> {{file.start_date}}</h4>
+        <h4><strong>End date:</strong> {{file.end_date}}</h4>
+      <img src = "{{file.the_file}}" class="picture" type="button" (click)="inLargePicDialog()">      
+        <p>Notes: {{file.notes}}</p>
+      </mat-card-content>
+   
+      <mat-card-actions calls="actions">
+        <button mat-button class="edit-btn" (click) = "openDialog()"><i class="fas fa-pencil-alt fa-2x"></i></button>    
+        <button mat-button class="dlt-btn"  (click)="deleteFile()"><i class="fas fa-trash-alt fa-2x"></i></button>    
+      </mat-card-actions>    
+   
+   </mat-card>

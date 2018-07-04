@@ -1,25 +1,27 @@
 <mat-card class="form-buttons">
- 
-    <button mat-button color="primary" class="actionBtn" (click)="triggerSnapshot();">Take A Snapshot</button>
-    <button mat-button color="primary" class="actionBtn" (click)="sendNewPic(webcamImage.imageAsDataUrl);">Use this pic</button>
-    
-    <!-- <button mat-button color="primary" class="actionBtn" (click)="toggleWebcam();">Toggle Webcam</button> -->
-    <!-- <input id="cameraSwitchCheckbox" type="checkbox" [(ngModel)]="allowCameraSwitch"> -->
-    <!-- <label for="cameraSwitchCheckbox">Allow Camera Switch</label> -->
-  
-  </mat-card>
-  <div style="text-align:center">
-    <div>
-      <mat-card>
-        <webcam [height]="350" [width]="350" [trigger]="triggerObservable" (imageCapture)="handleImage($event)" *ngIf="showWebcam"
-          [allowCameraSwitch]="allowCameraSwitch" [switchCamera]="nextWebcamObservable" [videoOptions]="videoOptions" (cameraSwitched)="cameraWasSwitched($event)"
-          (initError)="handleInitError($event)"></webcam>
-        <div class="snapshot" *ngIf="webcamImage">
-          <h2>Nice one!</h2>
-          <img [src]="webcamImage.imageAsDataUrl" />
-        </div>
-      </mat-card>
-      <!-- <br/>
+
+  <button mat-button color="primary" class="actionBtn" (click)="triggerSnapshot();" *ngIf="!toggelBtn">Take A Snapshot</button>
+  <button mat-button color="primary" class="actionBtn" (click)="sendNewPic(webcamImage.imageAsDataUrl);" *ngIf="toggelBtn">Use this pic</button>
+
+  <!-- <button mat-button color="primary" class="actionBtn" (click)="toggleWebcam();">Toggle Webcam</button> -->
+  <!-- <input id="cameraSwitchCheckbox" type="checkbox" [(ngModel)]="allowCameraSwitch"> -->
+  <!-- <label for="cameraSwitchCheckbox">Allow Camera Switch</label> -->
+
+</mat-card>
+<div style="text-align:center">
+  <div>
+    <mat-card>
+      <webcam [height]="350" [width]="350" [trigger]="triggerObservable" (imageCapture)="handleImage($event)" *ngIf="showWebcam"
+        [allowCameraSwitch]="allowCameraSwitch" [switchCamera]="nextWebcamObservable" [videoOptions]="videoOptions" (cameraSwitched)="cameraWasSwitched($event)"
+        (initError)="handleInitError($event)">
+        <input type="file" accept="image/*" capture="camera" />
+      </webcam>
+      <div class="snapshot" *ngIf="webcamImage">
+        <h2>Nice one!</h2>
+        <img [src]="webcamImage.imageAsDataUrl" />
+      </div>
+    </mat-card>
+    <!-- <br/>
       <br/>
       <button mat-button color="primary" class="actionBtn" (click)="showNextWebcam(true);" [disabled]="!multipleWebcamsAvailable">Next Webcam</button>
       <br/> DeviceId:
@@ -27,10 +29,10 @@
       <button mat-button color="primary" (click)="showNextWebcam(deviceId);">Activate</button>
     </div>
   </div> -->
-  
-  
-  
-  <h4 *ngIf="errors.length > 0">Messages:</h4>
-  <ul *ngFor="let error of errors">
-    <li>{{error | json}}</li>
-  </ul>
+
+
+
+    <h4 *ngIf="errors.length > 0">Messages:</h4>
+    <ul *ngFor="let error of errors">
+      <li>{{error | json}}</li>
+    </ul>

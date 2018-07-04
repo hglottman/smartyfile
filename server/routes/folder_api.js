@@ -11,9 +11,10 @@ router.get('/:id', (req, res) => {
     })
 })
 
-router.delete('/delete/:folder_id', (req, res) => {
+router.delete('/delete/:folder_id/:user_id', (req, res) => {
     folder_id = req.params.folder_id;
-    folder.deleteFolder(folder_id).then(data => {
+    user_id = req.params.user_id;
+    folder.deleteFolder(folder_id, user_id).then(data => {
         res.send(JSON.stringify(data));
     })
 }
