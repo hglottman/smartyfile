@@ -64,7 +64,7 @@ class File_Model {
             file_id: null,
             file_name: newFile.file_name,
             folder_id: newFile.folder_id,
-            upload_date: newFile.upload_date,
+            upload_date: new Date(),
             start_date: newFile.start_date,
             end_date: newFile.end_date,
             notes: newFile.notes

@@ -7,7 +7,7 @@
   <div class="welcomeDiv">
       <span class="welcome">Welcome {{currentUser.first_name}}</span>
       <br>
-      <img mat-card-image *ngIf="currentUser.user_img" src="{{currentUser.user_img}}" alt="" class="img">
+      <img mat-card-image *ngIf="currentUser.user_img" src="{{currentUser.user_img}}" (click)="zoomInImg()" alt="" class="img">
     </div>
 
       <button mat-button class="containerMenuButton" type="button" mat-button (click)="drawer.toggle()" (click)="showFiller = !showFiller"

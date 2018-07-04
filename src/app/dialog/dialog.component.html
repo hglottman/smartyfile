@@ -2,17 +2,17 @@
 <mat-dialog-content *ngIf="show==true">
 
   <mat-form-field>
-    <input matInput placeholder="File Name" [(ngModel)]="description.file_name">
+    <input matInput placeholder="File Name" [(ngModel)]="description.file_name" required>
   </mat-form-field>
   <br>
   <mat-form-field>
-    <input matInput [matDatepicker]="picker" placeholder="Start Date" [(ngModel)]="description.start_date">
+    <input required matInput [matDatepicker]="picker" placeholder="Start Date" [(ngModel)]="description.start_date">
     <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
     <mat-datepicker #picker></mat-datepicker>
   </mat-form-field>
   <br>
   <mat-form-field>
-    <input matInput [matDatepicker]="end" placeholder="End Date" [(ngModel)]="description.end_date">
+    <input required matInput [matDatepicker]="end" placeholder="End Date" [(ngModel)]="description.end_date">
     <mat-datepicker-toggle matSuffix [for]="end"></mat-datepicker-toggle>
     <mat-datepicker #end></mat-datepicker>
   </mat-form-field>
@@ -28,8 +28,8 @@
   </mat-radio-group>
   <br>
   <br>
-  <input *ngIf="toggelRadio==1" type="file" (change)="onFileSelected($event)">
-  <button *ngIf="toggelRadio==2" mat-button color="primary" (click)="openDialog()">Take A pic</button>
+  <input required *ngIf="toggelRadio==1" type="file" (change)="onFileSelected($event)">
+  <button required *ngIf="toggelRadio==2" mat-button color="primary" (click)="openDialog()">Take A pic</button>
   
 
 </mat-dialog-content>

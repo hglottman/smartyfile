@@ -13,12 +13,10 @@ import { Observable } from 'rxjs';
   styleUrls: ['./zoom-in-profile-pic.component.css']
 })
 export class ZoomInProfilePicComponent implements OnInit {
-  currentUser;
   filePic;
   constructor(public dialogRef: MatDialogRef<ZoomInProfilePicComponent>,
     public folderService:FolderService,
     @Inject(MAT_DIALOG_DATA) public data: any,public userService:UserService, public dialog: MatDialog) {
-      this.currentUser = this.userService.currentUser
     }
 
   ngOnInit() {
