@@ -39,9 +39,9 @@ body{
 
 .addnewfolder {
     font-size: 16px;
-    color: white;
+    color: #37474F;
     padding-left: 20px;
-    background-color: #37474F; 
+    /* background-color: #37474F;  */
     position: absolute;
     right: 0px;
 }

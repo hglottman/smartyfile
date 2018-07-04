@@ -1,6 +1,6 @@
 
 
-    <div class="addfolder">
+    <div class="addfolder" *ngIf="!toggleInput">
         <mat-form-field>
             <input matInput type="text" class="folder-input" [(ngModel)] = "newFolder.folder_name" placeholder="Enter Folder Name ">
           </mat-form-field>
