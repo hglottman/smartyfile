@@ -1,6 +1,7 @@
 <app-header></app-header>
 <app-filter [filterString]="filterString" (filterChanged)="onFilterChanged($event)"></app-filter>
 <div class="filter-header" *ngIf="filterString?.length > 0">Filtering files by name: {{ filterString }}</div>
+
 <div class='files-grid'>
   <div *ngFor="let file of files" class="file-card">
     <app-file-unit [file]="file" buttonText="See File" (buttonOnClick)="openFile($event)" (zoomFilePic)="zoomFilePic($event)"

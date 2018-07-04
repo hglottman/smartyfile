@@ -8,11 +8,6 @@
     grid-row-gap: 5px;
 }
 
-body {
-    margin: 0;
-    padding: 0;
-}
-
 
 .header {
     grid-column: 1 / 3;

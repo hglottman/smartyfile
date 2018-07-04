@@ -1,5 +1,7 @@
-<mat-form-field>
-    <input matInput [(ngModel)]="filterString" placeholder="Filter files by name..." /> 
-</mat-form-field>
+<div class="search">
+    <mat-form-field>
+        <input matInput [(ngModel)]="filterString" placeholder="Filter files by name..." />
+    </mat-form-field>
 
-        <button mat-button (click)="changeFilter()">SEARCH</button>
+    <button mat-button (click)="changeFilter()">SEARCH</button>
+</div>
