@@ -44,7 +44,7 @@ export class LoginComponent implements OnInit {
   constructor(public userService: UserService, public dialog: MatDialog, private router: Router) { }
 
   ngOnInit() {
-    this.loading = false
+    // this.loading = false
     WebcamUtil.getAvailableVideoInputs()
       .then((mediaDevices: MediaDeviceInfo[]) => {
         this.multipleWebcamsAvailable = mediaDevices && mediaDevices.length > 1;
