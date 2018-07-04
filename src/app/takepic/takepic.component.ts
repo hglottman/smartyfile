@@ -13,6 +13,7 @@ import { Observable } from 'rxjs';
 })
 export class TakepicComponent implements OnInit {
   pic;
+  toggelBtn:boolean = false
   // toggle webcam on/off
   public showWebcam = true;
   public allowCameraSwitch = true;
@@ -35,6 +36,7 @@ export class TakepicComponent implements OnInit {
     @Inject(MAT_DIALOG_DATA) public data: any, public userService: UserService) { }
 
   ngOnInit() {
+    this.toggelBtn = false
     WebcamUtil.getAvailableVideoInputs()
       .then((mediaDevices: MediaDeviceInfo[]) => {
         this.multipleWebcamsAvailable = mediaDevices && mediaDevices.length > 1;
@@ -48,6 +50,7 @@ export class TakepicComponent implements OnInit {
     this.dialogRef.close()
   }
   public triggerSnapshot(): void {
+    this.toggelBtn = true
     this.trigger.next();
     this.showWebcam = false
   }

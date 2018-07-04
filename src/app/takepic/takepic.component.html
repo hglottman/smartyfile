@@ -1,7 +1,7 @@
 <mat-card class="form-buttons">
 
-  <button mat-button color="primary" class="actionBtn" (click)="triggerSnapshot();">Take A Snapshot</button>
-  <button mat-button color="primary" class="actionBtn" (click)="sendNewPic(webcamImage.imageAsDataUrl);">Use this pic</button>
+  <button mat-button color="primary" class="actionBtn" (click)="triggerSnapshot();" *ngIf="!toggelBtn">Take A Snapshot</button>
+  <button mat-button color="primary" class="actionBtn" (click)="sendNewPic(webcamImage.imageAsDataUrl);" *ngIf="toggelBtn">Use this pic</button>
 
   <!-- <button mat-button color="primary" class="actionBtn" (click)="toggleWebcam();">Toggle Webcam</button> -->
   <!-- <input id="cameraSwitchCheckbox" type="checkbox" [(ngModel)]="allowCameraSwitch"> -->
