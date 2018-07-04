@@ -20,35 +20,10 @@ export class FileUnitComponent implements OnInit {
 
 
 
-
-  constructor(private dialog: MatDialog) { }
-
-  ngOnInit( ) {
-
-  }
-
-  colorFile() {
-    const MS_PER_DAY = 1000 * 60 * 60 * 24;
-
-    // a and b are javascript Date objects
-    function dateDiffInDays(a, b) {
-      // Discard the time and time-zone information.
-      const utc1 = Date.UTC(d1.getFullYear(), d1.getMonth(), d1.getDate());
-      const utc2 = Date.UTC(d2.getFullYear(), d2.getMonth(), d2.getDate());
-      return Math.floor((utc2 - utc1) / MS_PER_DAY);
-    }
-
-    const d1: Date = new Date();
-    const d2: Date = new Date(this.file.end_date);
-    const difference = dateDiffInDays(d1, d2);
-    // console.log(difference);
-
-
   constructor(private dialog: MatDialog) { }
 
   ngOnInit() {
 
-  console.log(this.file);
   }
 
   colorFile() {
