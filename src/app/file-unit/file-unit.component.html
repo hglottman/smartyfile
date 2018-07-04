@@ -1,9 +1,10 @@
 <mat-card class="file-unit">
 
   <mat-card-header class="header">
-    <h1>{{file.file_name}}</h1>
-    <i [style.color]="colorFile()" class="material-icons">hourglass_full</i>
+     <h1>{{file.file_name}}</h1>
   </mat-card-header>
+  <div id="div1" [style.color]="colorFile()" class="fa">
+    </div>
 
   <p class="upload-date"><strong>Upload date:</strong> <br> {{file.upload_date}}</p>
   <p class="start-date"><strong>Start date:</strong> <br> {{file.start_date}}</p>
