@@ -31,6 +31,18 @@ router.post('/add_folder/:id', (req, res) => {
      })
 } )
 
+router.put('/update_folder', (req, res) => {
+  let  foldersName = req.body.newName;
+    let = user_id = req.body.user_id;
+    let folder_id = req.body.folder_id;
+    folder.updateFolder(foldersName, user_id, folder_id).then((allFolders) => {
+      res.send(JSON.stringify(allFolders))
+    })
+    err => {
+      console.error(err)
+    }
+  })
+
 
 
 module.exports = router;

@@ -26,8 +26,8 @@ export class FolderService {
   public allFoldersObservable: Observable<Folder[]>;
   public filePicSubject: Subject<string> = new Subject<string>();
   public filePicObservable:Observable<string>;
-  public zoomPicSubject: Subject<string> = new Subject<string>();
-  public zoomPicObservable:Observable<string>;
+  public updateFolder: Subject<string> = new Subject<string>();
+  public updateFolderObservable:Observable<string>;
 
   constructor(private http: HttpClient, private userService: UserService) {
     this.currentUser = this.userService.currentUser;
@@ -35,8 +35,7 @@ export class FolderService {
     this.allFilesObservable = this.allFilesSubject.asObservable();
     this.userOservable = this.userSubject.asObservable()
     this.filePicObservable = this.filePicSubject.asObservable()
-    this.zoomPicObservable = this.zoomPicSubject.asObservable()
-
+    this.updateFolderObservable = this.updateFolder.asObservable()
   }
 
   getAllFiles(folder_id): any {
@@ -99,6 +98,12 @@ export class FolderService {
     this.http.delete<Folder[]>('/folder_api/delete/' + folder.folder_id + '/' + folder.user_id ) .subscribe(data => {
       this.allFolders = data;
       this.allFoldersSubject.next(this.allFolders);
+    });
+  }
+
+  updateFolderName(newName, user_id, folder_id) {
+    this.http.put<Folder[]>('/folder_api/update_folder', { newName: newName, user_id: user_id, folder_id : folder_id }).subscribe((data) => {
+      this.allFoldersSubject.next(data);
     });
   }
 

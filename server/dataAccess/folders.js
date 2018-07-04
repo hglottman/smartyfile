@@ -49,6 +49,20 @@ class Folder_Model {
         console.log(id);
         return this.folder.create(newFolder)
     }
+
+    updateFolder(newName, user_id, folder_id) {
+        return this.folder.update(
+            { folder_name: newName },
+            {
+                where: { folder_id: folder_id }
+            }).then(() => {
+                return this.folder.findAll({ where: { user_id: user_id, is_active: true } }).then(data => {
+                    return data;
+                }, err => {
+                    console.error(err)
+                });
+            })
+    }
 }
 
 
